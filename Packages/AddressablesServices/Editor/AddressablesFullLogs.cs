@@ -4,7 +4,6 @@ namespace AddressablesServices.Editor
 {
     public static class AddressablesFullLogs
     {
-
         private const string AddressablesFullLogsDefine = "ADDRESSABLES_LOG_ALL";
         
         [MenuItem("Window/Asset Management/Addressables/Logging/Enable addressables full logs")]
@@ -18,6 +17,5 @@ namespace AddressablesServices.Editor
         {
             ScriptingDefineSymbolsUtilities.RemoveDefineSymbols(AddressablesFullLogsDefine);
         }
-      
     }
 }

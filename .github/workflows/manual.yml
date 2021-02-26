@@ -1,14 +1,24 @@
 name: manual-CI
 on: [workflow_dispatch]
 jobs:
-  split-upm:
-    name: split upm branch (force)
+  release:
+    name: release
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: split upm branch
+    - name: Semantic release
+      id: semantic
+      uses: cycjimmy/semantic-release-action@v2.5.3
+      with:
+        extra_plugins: |
+          @semantic-release/changelog
+          @semantic-release/git
+        branch: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create upm branch
       run: |
         git branch -d upm &> /dev/null || echo upm branch not found
         git subtree split -P "$PKG_ROOT" -b upm
@@ -16,3 +26,10 @@ jobs:
         git push -f -u origin upm
       env:
         PKG_ROOT: Packages/AddressablesServices
+    - name: Create upm git tag
+      if: steps.semantic.outputs.new_release_published == 'true'
+      run: |
+        git tag $TAG upm
+        git push origin --tags
+      env:
+        TAG: upm/v${{ steps.semantic.outputs.new_release_version }}

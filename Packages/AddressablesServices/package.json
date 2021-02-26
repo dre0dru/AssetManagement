@@ -1,0 +1,22 @@
+{
+  "name": "com.dre0dru.addressables.services",
+  "version": "1.0.5",
+  "displayName": "Addressables services",
+  "description": "Addressables services for async/await workflow using UniTask",
+  "unity": "2020.2",
+  "unityRelease": "5f1",
+  "dependencies": {
+    "com.cysharp.unitask": "2.2.1",
+    "com.unity.addressables": "1.16.16"
+  },
+  "keywords": [
+    "Addressables",
+    "UniTask",
+    "Async/Await"
+  ],
+  "author": {
+    "name": "Dre0Dru",
+    "url": "https://github.com/dre0dru"
+  },
+  "type": "library"
+}

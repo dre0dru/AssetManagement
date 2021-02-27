@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using TNRD.Utilities;
+using UnityEditor;
 
 namespace AddressablesServices.Editor
 {
@@ -9,13 +10,13 @@ namespace AddressablesServices.Editor
         [MenuItem("Window/Asset Management/Addressables/Logging/Enable addressables full logs")]
         public static void EnableAddressablesFullLogs()
         {
-            ScriptingDefineSymbolsUtilities.AddDefineSymbol(AddressablesFullLogsDefine);
+            ScriptingDefineUtility.Add(AddressablesFullLogsDefine);
         }
         
         [MenuItem("Window/Asset Management/Addressables/Logging/Disable addressables full logs")]
         public static void DisableAddressablesFullLogs()
         {
-            ScriptingDefineSymbolsUtilities.RemoveDefineSymbols(AddressablesFullLogsDefine);
+            ScriptingDefineUtility.Remove(AddressablesFullLogsDefine);
         }
     }
 }

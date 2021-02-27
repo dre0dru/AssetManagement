@@ -1,7 +1,9 @@
 {
     "name": "AddressablesServices.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:0a1e08ec355927740b1556caf7d00aae"
+    ],
     "includePlatforms": [
         "Editor"
     ],

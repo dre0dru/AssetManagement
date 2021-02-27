@@ -13,7 +13,8 @@
       "source": "embedded",
       "dependencies": {
         "com.cysharp.unitask": "2.2.1",
-        "com.unity.addressables": "1.16.16"
+        "com.unity.addressables": "1.16.16",
+        "net.tnrd.scriptingdefineutility": "1.0.1"
       }
     },
     "com.unity.2d.sprite": {
@@ -105,6 +106,13 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "net.tnrd.scriptingdefineutility": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

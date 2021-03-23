@@ -21,7 +21,6 @@ namespace AddressablesServices
         public override bool ValidateAsset(string path)
         {
             #if UNITY_EDITOR
-            //this load can be expensive...
             var go = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
             return go != null && go.GetComponent<T>() != null;
             #else

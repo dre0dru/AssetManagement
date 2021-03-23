@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace AddressablesServices.Loaders
 {
+    public interface IComponentAddressablesLoader<T> : IAddressablesLoader<AssetReferenceComponent<T>, T>
+        where T : Component
+    {
+    }
+    
     public class
         ComponentAddressablesLoader<T> : BaseAddressablesLoader<AssetReferenceComponent<T>, T, GameObject>,
             IComponentAddressablesLoader<T>

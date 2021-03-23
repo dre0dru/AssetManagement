@@ -6,6 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace AddressablesServices.Loaders
 {
+    //TODO: try catch при загрузке ассетов, при неудачной загрузке выгружать все
     public abstract class
         BaseAddressablesLoader<TAssetReference, TResult, THandleType> : IAddressablesLoader<TAssetReference, TResult>
         where TAssetReference : AssetReference where TResult : Object where THandleType : Object

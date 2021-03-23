@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace AddressablesServices
+namespace AddressablesServices.Loaders
 {
     public interface IAddressablesLoader<in TAssetReference, TResult> where TAssetReference : AssetReference where TResult: Object
     {

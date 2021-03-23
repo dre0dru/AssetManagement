@@ -6,9 +6,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace AddressablesServices
 {
-    //TODO проверить как юнитаски хендлят autorelease handle
-    //TODO добавить апи для эксепшн хендлинга
-    //TODO try catch throw finally release handle
     public class AddressablesService : IAddressablesService
     {
         public async UniTask InitializeAsync()
@@ -42,13 +39,19 @@ namespace AddressablesServices
 
         private async UniTask<long> GetDownloadSizeAsyncInternal(AsyncOperationHandle<long> handle)
         {
-            var downloadSize = await handle;
-            Addressables.Release(handle);
-            return downloadSize;
+            try
+            {
+                var downloadSize = await handle;
+                return downloadSize;
+            }
+            finally
+            {
+                Addressables.Release(handle);
+            }
         }
 
         public UniTask<bool> DownloadContentAsync(AssetLabelReference assetLabelReference,
-            Action<float> onDownloadProgressUpdate)
+            IProgress<float> onDownloadProgressUpdate)
         {
             var handle = Addressables.DownloadDependenciesAsync(assetLabelReference, false);
 
@@ -56,7 +59,7 @@ namespace AddressablesServices
         }
 
         public UniTask<bool> DownloadContentAsync(IEnumerable<AssetLabelReference> assetLabelReferences,
-            Action<float> onDownloadProgressUpdate)
+            IProgress<float> onDownloadProgressUpdate)
         {
             var handle = Addressables.DownloadDependenciesAsync(assetLabelReferences, false);
 
@@ -64,32 +67,47 @@ namespace AddressablesServices
         }
 
         private async UniTask<bool> DownloadContentAsyncInternal(AsyncOperationHandle handle,
-            Action<float> onDownloadProgressUpdate)
+            IProgress<float> onDownloadProgressUpdate)
         {
-            while (handle.IsDone == false)
+            var downloadTask = handle.ToUniTask(onDownloadProgressUpdate);
+
+            try
             {
-                await UniTask.WaitForEndOfFrame();
-                onDownloadProgressUpdate(handle.GetDownloadStatus().Percent);
+                await downloadTask;
+                return handle.Status == AsyncOperationStatus.Succeeded;
             }
-
-            bool isSucceeded = handle.Status == AsyncOperationStatus.Succeeded;
-
-            Addressables.Release(handle);
-
-            return isSucceeded;
+            finally
+            {
+                Addressables.Release(handle);
+            }
         }
 
         public async UniTask<bool> CheckForCatalogUpdatesAsync()
         {
-            var handle = Addressables.CheckForCatalogUpdates(true);
-            var result = await handle;
-            return result.Count > 0;
+            var handle = Addressables.CheckForCatalogUpdates(false);
+            try
+            {
+                var result = await handle;
+                return result.Count > 0;
+            }
+            finally
+            {
+                Addressables.Release(handle);
+            }
         }
 
-        public async UniTask UpdateCatalogAsync()
+        public async UniTask UpdateCatalogAsync(IEnumerable<string> catalogs = null)
         {
-            var handle = Addressables.UpdateCatalogs(null, true);
-            await handle;
+            var handle = Addressables.UpdateCatalogs(catalogs, false);
+
+            try
+            {
+                await handle;
+            }
+            finally
+            {
+                Addressables.Release(handle);
+            }
         }
     }
 }

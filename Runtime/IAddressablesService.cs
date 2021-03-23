@@ -18,13 +18,13 @@ namespace AddressablesServices
         UniTask<long> GetDownloadSizeAsync(IEnumerable<AssetLabelReference> assetLabelReferences);
 
         UniTask<bool> DownloadContentAsync(AssetLabelReference assetLabelReference,
-            Action<float> onDownloadProgressUpdate);
+            IProgress<float> onDownloadProgressUpdate);
 
         UniTask<bool> DownloadContentAsync(IEnumerable<AssetLabelReference> assetLabelReferences,
-            Action<float> onDownloadProgressUpdate);
+            IProgress<float> onDownloadProgressUpdate);
 
         UniTask<bool> CheckForCatalogUpdatesAsync();
 
-        UniTask UpdateCatalogAsync();
+        UniTask UpdateCatalogAsync(IEnumerable<string> catalogs = null);
     }
 }

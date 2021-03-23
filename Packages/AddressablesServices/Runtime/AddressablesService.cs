@@ -6,6 +6,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace AddressablesServices
 {
+    //TODO проверить как юнитаски хендлят autorelease handle
+    //TODO добавить апи для эксепшн хендлинга
+    //TODO try catch throw finally release handle
     public class AddressablesService : IAddressablesService
     {
         public async UniTask InitializeAsync()

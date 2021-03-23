@@ -1,4 +1,4 @@
-namespace AddressablesServices
+namespace AddressablesServices.Loaders
 {
     internal static class Constants
     {

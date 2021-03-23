@@ -1,6 +1,6 @@
 namespace AddressablesServices
 {
-    internal sealed class Constants
+    internal static class Constants
     {
         public const string LogsTag = "[Addressables Services]";
     }

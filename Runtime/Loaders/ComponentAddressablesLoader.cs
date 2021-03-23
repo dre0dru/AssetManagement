@@ -11,7 +11,7 @@ namespace AddressablesServices.Loaders
         {
             result = loadedAsset.GetComponent<T>();
 
-            if (result == null)
+            if (result == false)
             {
                 Debug.LogWarning(
                     $"{Constants.LogsTag} Trying to get game object without component: {nameof(T)} from loader of type: {GetType()}");

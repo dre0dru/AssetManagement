@@ -41,7 +41,10 @@ namespace AddressablesServices.Loaders
 
             await handle;
 
-            _preloadedAssets.Add(assetKey.RuntimeKey, handle);
+            lock (_preloadedAssets)
+            {
+                _preloadedAssets.Add(assetKey.RuntimeKey, handle);
+            }
         }
 
         public void UnloadAssets(IEnumerable<TAssetReference> assetKeys)
@@ -55,6 +58,7 @@ namespace AddressablesServices.Loaders
         public void UnloadAsset(TAssetReference assetKey)
         {
             var key = assetKey.RuntimeKey;
+            
             if (_preloadedAssets.TryGetValue(key, out var handle))
             {
                 Addressables.Release(handle);

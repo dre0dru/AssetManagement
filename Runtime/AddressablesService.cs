@@ -6,38 +6,38 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace AddressablesServices
 {
-    public class AddressablesService : IAddressablesService
+    public static class AddressablesService
     {
-        public async UniTask InitializeAsync()
+        public static async UniTask InitializeAsync()
         {
             await Addressables.InitializeAsync();
         }
 
-        public async UniTask<bool> IsContentDownloaded(AssetLabelReference assetLabelReference)
+        public static async UniTask<bool> IsContentDownloaded(AssetLabelReference assetLabelReference)
         {
             var downloadSize = await GetDownloadSizeAsync(assetLabelReference);
             return downloadSize == 0;
         }
 
-        public async UniTask<bool> IsContentDownloaded(IEnumerable<AssetLabelReference> assetLabelReferences)
+        public static async UniTask<bool> IsContentDownloaded(IEnumerable<AssetLabelReference> assetLabelReferences)
         {
             var downloadSize = await GetDownloadSizeAsync(assetLabelReferences);
             return downloadSize == 0;
         }
 
-        public UniTask<long> GetDownloadSizeAsync(AssetLabelReference assetLabelReference)
+        public static UniTask<long> GetDownloadSizeAsync(AssetLabelReference assetLabelReference)
         {
             var handle = Addressables.GetDownloadSizeAsync(assetLabelReference);
             return GetDownloadSizeAsyncInternal(handle);
         }
 
-        public UniTask<long> GetDownloadSizeAsync(IEnumerable<AssetLabelReference> assetLabelReferences)
+        public static UniTask<long> GetDownloadSizeAsync(IEnumerable<AssetLabelReference> assetLabelReferences)
         {
             var handle = Addressables.GetDownloadSizeAsync(assetLabelReferences);
             return GetDownloadSizeAsyncInternal(handle);
         }
 
-        private async UniTask<long> GetDownloadSizeAsyncInternal(AsyncOperationHandle<long> handle)
+        private static async UniTask<long> GetDownloadSizeAsyncInternal(AsyncOperationHandle<long> handle)
         {
             try
             {
@@ -50,31 +50,38 @@ namespace AddressablesServices
             }
         }
 
-        public UniTask<bool> DownloadContentAsync(AssetLabelReference assetLabelReference,
-            IProgress<float> onDownloadProgressUpdate)
+        public static UniTask DownloadContentAsync(AssetLabelReference assetLabelReference,
+            Action<DownloadStatus> onDownloadProgressUpdate)
         {
             var handle = Addressables.DownloadDependenciesAsync(assetLabelReference, false);
 
             return DownloadContentAsyncInternal(handle, onDownloadProgressUpdate);
         }
 
-        public UniTask<bool> DownloadContentAsync(IEnumerable<AssetLabelReference> assetLabelReferences,
-            IProgress<float> onDownloadProgressUpdate)
+        public static UniTask DownloadContentAsync(IEnumerable<AssetLabelReference> assetLabelReferences,
+            Action<DownloadStatus> onDownloadProgressUpdate)
         {
             var handle = Addressables.DownloadDependenciesAsync(assetLabelReferences, false);
 
             return DownloadContentAsyncInternal(handle, onDownloadProgressUpdate);
         }
 
-        private async UniTask<bool> DownloadContentAsyncInternal(AsyncOperationHandle handle,
-            IProgress<float> onDownloadProgressUpdate)
+        private static async UniTask DownloadContentAsyncInternal(AsyncOperationHandle handle,
+            Action<DownloadStatus> onDownloadProgressUpdate)
         {
-            var downloadTask = handle.ToUniTask(onDownloadProgressUpdate);
-
             try
             {
-                await downloadTask;
-                return handle.Status == AsyncOperationStatus.Succeeded;
+                do
+                {
+                    var downloadStatus = handle.GetDownloadStatus();
+                    onDownloadProgressUpdate?.Invoke(downloadStatus);
+                    await UniTask.WaitForEndOfFrame();
+                } while (handle.IsDone == false);
+
+                if (handle.Status == AsyncOperationStatus.Failed)
+                {
+                    throw handle.OperationException;
+                }
             }
             finally
             {
@@ -82,7 +89,7 @@ namespace AddressablesServices
             }
         }
 
-        public async UniTask<bool> CheckForCatalogUpdatesAsync()
+        public static async UniTask<bool> CheckForCatalogUpdatesAsync()
         {
             var handle = Addressables.CheckForCatalogUpdates(false);
             try
@@ -96,7 +103,7 @@ namespace AddressablesServices
             }
         }
 
-        public async UniTask UpdateCatalogAsync(IEnumerable<string> catalogs = null)
+        public static async UniTask UpdateCatalogAsync(IEnumerable<string> catalogs = null)
         {
             var handle = Addressables.UpdateCatalogs(catalogs, false);
 

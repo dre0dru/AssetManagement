@@ -2,14 +2,8 @@ using UnityEngine;
 
 namespace AddressablesServices.Loaders
 {
-    public interface IComponentAddressablesLoader<T> : IAddressablesLoader<AssetReferenceComponent<T>, T>
-        where T : Component
-    {
-    }
-    
-    public class
-        ComponentAddressablesLoader<T> : BaseAddressablesLoader<AssetReferenceComponent<T>, T, GameObject>,
-            IComponentAddressablesLoader<T>
+    public class AddressablesComponentLoader<T> :
+        AddressablesLoaderBase<AssetReferenceComponent<T>, T, GameObject>
         where T : Component
     {
         protected override bool TryExtractResult(GameObject loadedAsset, out T result)

@@ -7,13 +7,15 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 namespace AddressablesServices.Loaders
 {
     //TODO: try catch при загрузке ассетов, при неудачной загрузке выгружать все
-    public abstract class
-        BaseAddressablesLoader<TAssetReference, TResult, THandleType> : IAddressablesLoader<TAssetReference, TResult>
+    //TODO: флаг, по которому будет выгружать или нет
+    //TODO: params[] overload
+    public abstract class AddressablesLoaderBase<TAssetReference, TResult, THandleType> :
+        IAddressablesLoader<TAssetReference, TResult>
         where TAssetReference : AssetReference where TResult : Object where THandleType : Object
     {
         private readonly Dictionary<object, AsyncOperationHandle<THandleType>> _preloadedAssets;
 
-        protected BaseAddressablesLoader()
+        protected AddressablesLoaderBase()
         {
             _preloadedAssets = new Dictionary<object, AsyncOperationHandle<THandleType>>();
         }
@@ -59,7 +61,7 @@ namespace AddressablesServices.Loaders
         public void UnloadAsset(TAssetReference assetKey)
         {
             var key = assetKey.RuntimeKey;
-            
+
             if (_preloadedAssets.TryGetValue(key, out var handle))
             {
                 Addressables.Release(handle);

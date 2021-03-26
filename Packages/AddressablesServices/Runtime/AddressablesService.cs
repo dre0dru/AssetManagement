@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
@@ -13,28 +14,60 @@ namespace AddressablesServices
             await Addressables.InitializeAsync();
         }
 
+        public static async UniTask<bool> IsContentDownloaded(AssetReference assetReference)
+        {
+            var downloadSize = await GetDownloadSizeAsync(assetReference);
+            return downloadSize == 0;
+        }
+
         public static async UniTask<bool> IsContentDownloaded(AssetLabelReference assetLabelReference)
         {
             var downloadSize = await GetDownloadSizeAsync(assetLabelReference);
             return downloadSize == 0;
         }
 
-        public static async UniTask<bool> IsContentDownloaded(IEnumerable<AssetLabelReference> assetLabelReferences)
+        public static async UniTask<bool> IsContentDownloaded(IEnumerable<AssetReference> assetReferences)
+        {
+            var downloadSize = await GetDownloadSizeAsync(assetReferences);
+            return downloadSize == 0;
+        }
+
+        public static async UniTask<bool> IsContentDownloaded(
+            IEnumerable<AssetLabelReference> assetLabelReferences)
         {
             var downloadSize = await GetDownloadSizeAsync(assetLabelReferences);
             return downloadSize == 0;
         }
 
-        public static UniTask<long> GetDownloadSizeAsync(AssetLabelReference assetLabelReference)
+        public static UniTask<long> GetDownloadSizeAsync(AssetReference assetReference)
         {
-            var handle = Addressables.GetDownloadSizeAsync(assetLabelReference);
-            return GetDownloadSizeAsyncInternal(handle);
+            var handle = Addressables.GetDownloadSizeAsync(assetReference);
+            return GetDownloadSizeAsyncInternal(GetDownloadSizeHandle(assetReference));
         }
 
-        public static UniTask<long> GetDownloadSizeAsync(IEnumerable<AssetLabelReference> assetLabelReferences)
+        public static UniTask<long> GetDownloadSizeAsync(AssetLabelReference assetLabelReference)
         {
-            var handle = Addressables.GetDownloadSizeAsync(assetLabelReferences);
-            return GetDownloadSizeAsyncInternal(handle);
+            return GetDownloadSizeAsyncInternal(GetDownloadSizeHandle(assetLabelReference));
+        }
+
+        public static UniTask<long> GetDownloadSizeAsync(IEnumerable<AssetReference> assetReferences)
+        {
+            return GetDownloadSizeAsyncInternal(GetDownloadSizeHandle(assetReferences));
+        }
+
+        public static UniTask<long> GetDownloadSizeAsync(IEnumerable<AssetLabelReference> assetLabelReference)
+        {
+            return GetDownloadSizeAsyncInternal(GetDownloadSizeHandle(assetLabelReference));
+        }
+
+        private static AsyncOperationHandle<long> GetDownloadSizeHandle(object key)
+        {
+            return Addressables.GetDownloadSizeAsync(key);
+        }
+
+        private static AsyncOperationHandle<long> GetDownloadSizeHandle(IEnumerable keys)
+        {
+            return Addressables.GetDownloadSizeAsync(keys);
         }
 
         private static async UniTask<long> GetDownloadSizeAsyncInternal(AsyncOperationHandle<long> handle)
@@ -50,20 +83,52 @@ namespace AddressablesServices
             }
         }
 
+        public static UniTask DownloadContentAsync(AssetReference assetReference,
+            Action<DownloadStatus> onDownloadProgressUpdate)
+        {
+            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetReference),
+                onDownloadProgressUpdate);
+        }
+        
         public static UniTask DownloadContentAsync(AssetLabelReference assetLabelReference,
             Action<DownloadStatus> onDownloadProgressUpdate)
         {
-            var handle = Addressables.DownloadDependenciesAsync(assetLabelReference, false);
-
-            return DownloadContentAsyncInternal(handle, onDownloadProgressUpdate);
+            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetLabelReference),
+                onDownloadProgressUpdate);
         }
 
+        public static UniTask DownloadContentAsync(IEnumerable<AssetReference> assetReferences,
+            Action<DownloadStatus> onDownloadProgressUpdate)
+        {
+            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetReferences),
+                onDownloadProgressUpdate);
+        }
+        
         public static UniTask DownloadContentAsync(IEnumerable<AssetLabelReference> assetLabelReferences,
             Action<DownloadStatus> onDownloadProgressUpdate)
         {
-            var handle = Addressables.DownloadDependenciesAsync(assetLabelReferences, false);
+            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetLabelReferences),
+                onDownloadProgressUpdate);
+        }
 
-            return DownloadContentAsyncInternal(handle, onDownloadProgressUpdate);
+        private static AsyncOperationHandle GetDownloadContentAsyncHandle(AssetReference assetReference)
+        {
+            return Addressables.DownloadDependenciesAsync(assetReference, false);
+        }
+
+        private static AsyncOperationHandle GetDownloadContentAsyncHandle(IEnumerable<AssetReference> assetReferences)
+        {
+            return Addressables.DownloadDependenciesAsync(assetReferences, false);
+        }
+        
+        private static AsyncOperationHandle GetDownloadContentAsyncHandle(AssetLabelReference assetLabelReference)
+        {
+            return Addressables.DownloadDependenciesAsync(assetLabelReference, false);
+        }
+
+        private static AsyncOperationHandle GetDownloadContentAsyncHandle(IEnumerable<AssetLabelReference> assetLabelReferences)
+        {
+            return Addressables.DownloadDependenciesAsync(assetLabelReferences, false);
         }
 
         private static async UniTask DownloadContentAsyncInternal(AsyncOperationHandle handle,

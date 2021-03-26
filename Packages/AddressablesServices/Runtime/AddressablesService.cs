@@ -16,32 +16,43 @@ namespace AddressablesServices
 
         public static async UniTask<bool> IsContentDownloaded(AssetReference assetReference)
         {
-            var downloadSize = await GetDownloadSizeAsync(assetReference);
-            return downloadSize == 0;
-        }
-
-        public static async UniTask<bool> IsContentDownloaded(AssetLabelReference assetLabelReference)
-        {
-            var downloadSize = await GetDownloadSizeAsync(assetLabelReference);
-            return downloadSize == 0;
+            return CheckIfContentIsDownloaded(await GetDownloadSizeAsync(assetReference));
         }
 
         public static async UniTask<bool> IsContentDownloaded(IEnumerable<AssetReference> assetReferences)
         {
-            var downloadSize = await GetDownloadSizeAsync(assetReferences);
-            return downloadSize == 0;
+            return CheckIfContentIsDownloaded(await GetDownloadSizeAsync(assetReferences));
+        }
+        
+        public static async UniTask<bool> IsContentDownloaded(params AssetReference[] assetReferences)
+        {
+            return CheckIfContentIsDownloaded(await GetDownloadSizeAsync(assetReferences));
+        }
+        
+        public static async UniTask<bool> IsContentDownloaded(AssetLabelReference assetLabelReference)
+        {
+            return CheckIfContentIsDownloaded(await GetDownloadSizeAsync(assetLabelReference));
         }
 
         public static async UniTask<bool> IsContentDownloaded(
             IEnumerable<AssetLabelReference> assetLabelReferences)
         {
-            var downloadSize = await GetDownloadSizeAsync(assetLabelReferences);
+            return CheckIfContentIsDownloaded(await GetDownloadSizeAsync(assetLabelReferences));
+        }
+        
+        public static async UniTask<bool> IsContentDownloaded(
+            params AssetLabelReference[] assetLabelReferences)
+        {
+            return CheckIfContentIsDownloaded(await GetDownloadSizeAsync(assetLabelReferences));
+        }
+
+        private static bool CheckIfContentIsDownloaded(long downloadSize)
+        {
             return downloadSize == 0;
         }
 
         public static UniTask<long> GetDownloadSizeAsync(AssetReference assetReference)
         {
-            var handle = Addressables.GetDownloadSizeAsync(assetReference);
             return GetDownloadSizeAsyncInternal(GetDownloadSizeHandle(assetReference));
         }
 
@@ -83,32 +94,40 @@ namespace AddressablesServices
             }
         }
 
-        public static UniTask DownloadContentAsync(AssetReference assetReference,
-            Action<DownloadStatus> onDownloadProgressUpdate)
+        public static UniTask DownloadContentAsync(Action<DownloadStatus> onDownloadProgressUpdate,
+            AssetReference assetReference)
         {
-            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetReference),
-                onDownloadProgressUpdate);
-        }
-        
-        public static UniTask DownloadContentAsync(AssetLabelReference assetLabelReference,
-            Action<DownloadStatus> onDownloadProgressUpdate)
-        {
-            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetLabelReference),
-                onDownloadProgressUpdate);
+            return DownloadContentAsyncInternal(onDownloadProgressUpdate, GetDownloadContentAsyncHandle(assetReference));
         }
 
-        public static UniTask DownloadContentAsync(IEnumerable<AssetReference> assetReferences,
-            Action<DownloadStatus> onDownloadProgressUpdate)
+        public static UniTask DownloadContentAsync(Action<DownloadStatus> onDownloadProgressUpdate,
+            IEnumerable<AssetReference> assetReferences)
         {
-            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetReferences),
-                onDownloadProgressUpdate);
+            return DownloadContentAsyncInternal(onDownloadProgressUpdate, GetDownloadContentAsyncHandle(assetReferences));
         }
         
-        public static UniTask DownloadContentAsync(IEnumerable<AssetLabelReference> assetLabelReferences,
-            Action<DownloadStatus> onDownloadProgressUpdate)
+        public static UniTask DownloadContentAsync(Action<DownloadStatus> onDownloadProgressUpdate,
+            params AssetReference[] assetReferences)
         {
-            return DownloadContentAsyncInternal(GetDownloadContentAsyncHandle(assetLabelReferences),
-                onDownloadProgressUpdate);
+            return DownloadContentAsyncInternal(onDownloadProgressUpdate, GetDownloadContentAsyncHandle(assetReferences));
+        }
+        
+        public static UniTask DownloadContentAsync(Action<DownloadStatus> onDownloadProgressUpdate,
+            AssetLabelReference assetLabelReference)
+        {
+            return DownloadContentAsyncInternal(onDownloadProgressUpdate, GetDownloadContentAsyncHandle(assetLabelReference));
+        }
+        
+        public static UniTask DownloadContentAsync(Action<DownloadStatus> onDownloadProgressUpdate,
+            IEnumerable<AssetLabelReference> assetLabelReferences)
+        {
+            return DownloadContentAsyncInternal(onDownloadProgressUpdate, GetDownloadContentAsyncHandle(assetLabelReferences));
+        }
+        
+        public static UniTask DownloadContentAsync(Action<DownloadStatus> onDownloadProgressUpdate,
+            params AssetLabelReference[] assetLabelReferences)
+        {
+            return DownloadContentAsyncInternal(onDownloadProgressUpdate, GetDownloadContentAsyncHandle(assetLabelReferences));
         }
 
         private static AsyncOperationHandle GetDownloadContentAsyncHandle(AssetReference assetReference)
@@ -131,8 +150,8 @@ namespace AddressablesServices
             return Addressables.DownloadDependenciesAsync(assetLabelReferences, false);
         }
 
-        private static async UniTask DownloadContentAsyncInternal(AsyncOperationHandle handle,
-            Action<DownloadStatus> onDownloadProgressUpdate)
+        private static async UniTask DownloadContentAsyncInternal(Action<DownloadStatus> onDownloadProgressUpdate,
+            AsyncOperationHandle handle)
         {
             try
             {

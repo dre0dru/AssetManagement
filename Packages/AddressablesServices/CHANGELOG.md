@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/dre0dru/AddressablesServices/compare/v1.1.0...v2.0.0) (2021-03-27)
+
+
+### Features
+
+* added params[] overload for AssetReference and AssetLabelReference methods ([3e8f721](https://github.com/dre0dru/AddressablesServices/commit/3e8f7210aad49763859522b0f0ea552de7a90dc0))
+* changed IAddressablesLoader component extensions to accept only AssetReferenceComponent as its argument ([0bf948c](https://github.com/dre0dru/AddressablesServices/commit/0bf948c4bfacbee51c31b0148a833430a6c9a304))
+
+
+* chore!: unity version update, packages update ([245ffd8](https://github.com/dre0dru/AddressablesServices/commit/245ffd8825b873a35529eb0751ee1028b0575d90))
+
+
+### BREAKING CHANGES
+
+* addressables and unitask packages updated to latest versions
+
 # [1.1.0](https://github.com/dre0dru/AddressablesServices/compare/v1.0.1...v1.1.0) (2021-02-27)
 
 

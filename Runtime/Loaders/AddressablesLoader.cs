@@ -7,28 +7,27 @@ using UnityEngine.Scripting;
 
 namespace AddressablesServices.Loaders
 {
-    public sealed class AddressablesLoader<TAssetReference, TResult> : IAddressablesLoader<TAssetReference, TResult>
-        where TAssetReference : AssetReference where TResult : Object
+    public sealed class AddressablesLoader<TAsset> : IAddressablesLoader<TAsset> where TAsset : Object
     {
-        private readonly Dictionary<object, AsyncOperationHandle<TResult>> _preloadedAssets;
+        private readonly Dictionary<object, AsyncOperationHandle<TAsset>> _preloadedAssets;
 
         [RequiredMember]
         public AddressablesLoader()
         {
-            _preloadedAssets = new Dictionary<object, AsyncOperationHandle<TResult>>();
+            _preloadedAssets = new Dictionary<object, AsyncOperationHandle<TAsset>>();
         }
 
-        public UniTask PreloadAssetsAsync(IEnumerable<TAssetReference> assetReferences)
+        public UniTask PreloadAssetsAsync(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
         {
             return PreloadAssetsInternal(assetReferences);
         }
 
-        public UniTask PreloadAssetsAsync(params TAssetReference[] assetReferences)
+        public UniTask PreloadAssetsAsync(params AssetReferenceT<TAsset>[] assetReferences)
         {
             return PreloadAssetsInternal(assetReferences);
         }
 
-        private UniTask PreloadAssetsInternal(IEnumerable<TAssetReference> assetReferences)
+        private UniTask PreloadAssetsInternal(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
         {
             var tasks = new List<UniTask>();
 
@@ -40,7 +39,7 @@ namespace AddressablesServices.Loaders
             return UniTask.WhenAll(tasks);
         }
 
-        public async UniTask PreloadAssetAsync(TAssetReference assetReference)
+        public async UniTask PreloadAssetAsync(AssetReferenceT<TAsset> assetReference)
         {
             if (_preloadedAssets.ContainsKey(assetReference.RuntimeKey))
             {
@@ -48,7 +47,7 @@ namespace AddressablesServices.Loaders
                 return;
             }
 
-            var handle = Addressables.LoadAssetAsync<TResult>(assetReference);
+            var handle = Addressables.LoadAssetAsync<TAsset>(assetReference);
 
             await handle;
 
@@ -58,17 +57,17 @@ namespace AddressablesServices.Loaders
             }
         }
 
-        public void UnloadAssets(IEnumerable<TAssetReference> assetReferences)
+        public void UnloadAssets(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
         {
             UnloadAssetsInternal(assetReferences);
         }
 
-        public void UnloadAssets(params TAssetReference[] assetReferences)
+        public void UnloadAssets(params AssetReferenceT<TAsset>[] assetReferences)
         {
             UnloadAssetsInternal(assetReferences);
         }
 
-        private void UnloadAssetsInternal(IEnumerable<TAssetReference> assetReferences)
+        private void UnloadAssetsInternal(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
         {
             foreach (var assetKey in assetReferences)
             {
@@ -76,7 +75,7 @@ namespace AddressablesServices.Loaders
             }
         }
 
-        public void UnloadAsset(TAssetReference assetReference)
+        public void UnloadAsset(AssetReferenceT<TAsset> assetReference)
         {
             var key = assetReference.RuntimeKey;
 
@@ -101,7 +100,7 @@ namespace AddressablesServices.Loaders
             _preloadedAssets.Clear();
         }
 
-        public bool TryGetAsset(TAssetReference assetReference, out TResult asset)
+        public bool TryGetAsset(AssetReferenceT<TAsset> assetReference, out TAsset asset)
         {
             if (_preloadedAssets.TryGetValue(assetReference.RuntimeKey, out var handle))
             {
@@ -115,7 +114,7 @@ namespace AddressablesServices.Loaders
             return false;
         }
 
-        public TResult GetAsset(TAssetReference assetReference)
+        public TAsset GetAsset(AssetReferenceT<TAsset> assetReference)
         {
             return _preloadedAssets[assetReference.RuntimeKey].Result;
         }

@@ -5,25 +5,24 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressablesServices.Loaders
 {
-    public interface IAddressablesLoader<in TAssetReference, TResult>
-        where TAssetReference : AssetReference where TResult : Object
+    public interface IAddressablesLoader<TAsset> where TAsset : Object
     {
-        UniTask PreloadAssetsAsync(IEnumerable<TAssetReference> assetReferences);
+        UniTask PreloadAssetsAsync(IEnumerable<AssetReferenceT<TAsset>> assetReferences);
         
-        UniTask PreloadAssetsAsync(params TAssetReference[] assetReferences);
+        UniTask PreloadAssetsAsync(params AssetReferenceT<TAsset>[] assetReferences);
 
-        UniTask PreloadAssetAsync(TAssetReference assetReference);
+        UniTask PreloadAssetAsync(AssetReferenceT<TAsset> assetReference);
 
-        void UnloadAssets(IEnumerable<TAssetReference> assetReferences);
+        void UnloadAssets(IEnumerable<AssetReferenceT<TAsset>> assetReferences);
 
-        void UnloadAssets(params TAssetReference[] assetReferences);
+        void UnloadAssets(params AssetReferenceT<TAsset>[] assetReferences);
 
-        void UnloadAsset(TAssetReference assetReference);
+        void UnloadAsset(AssetReferenceT<TAsset> assetReference);
 
         void UnloadAllAssets();
 
-        bool TryGetAsset(TAssetReference assetReference, out TResult asset);
+        bool TryGetAsset(AssetReferenceT<TAsset> assetReference, out TAsset asset);
 
-        TResult GetAsset(TAssetReference assetReference);
+        TAsset GetAsset(AssetReferenceT<TAsset> assetReference);
     }
 }

@@ -5,18 +5,25 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressablesServices.Loaders
 {
-    public interface IAddressablesLoader<in TAssetReference, TResult> where TAssetReference : AssetReference where TResult: Object
+    public interface IAddressablesLoader<in TAssetReference, TResult>
+        where TAssetReference : AssetReference where TResult : Object
     {
-        UniTask PreloadAssets(IEnumerable<TAssetReference> assetKeys);
+        UniTask PreloadAssets(IEnumerable<TAssetReference> assetReferences);
+        
+        UniTask PreloadAssets(params TAssetReference[] assetReferences);
 
-        UniTask PreloadAsset(TAssetReference assetKey);
+        UniTask PreloadAsset(TAssetReference assetReference);
 
-        void UnloadAssets(IEnumerable<TAssetReference> assetKeys);
+        void UnloadAssets(IEnumerable<TAssetReference> assetReferences);
 
-        void UnloadAsset(TAssetReference assetKey);
+        void UnloadAssets(params TAssetReference[] assetReferences);
+
+        void UnloadAsset(TAssetReference assetReference);
 
         void UnloadAllAssets();
 
-        bool TryGetAsset(TAssetReference assetKey, out TResult asset);
+        bool TryGetAsset(TAssetReference assetReference, out TResult asset);
+
+        TResult GetAsset(TAssetReference assetReference);
     }
 }

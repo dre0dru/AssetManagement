@@ -6,7 +6,7 @@ namespace AddressablesServices.Loaders
     public static class AddressablesLoaderExtensions
     {
         public static bool TryGetComponent<T>(
-            this IAddressablesLoader<AssetReferenceGameObject, GameObject> addressablesLoader,
+            this IAddressablesLoader<GameObject> addressablesLoader,
             AssetReferenceGameObject assetReference, out T component)
             where T : Component
         {
@@ -20,7 +20,7 @@ namespace AddressablesServices.Loaders
         }
 
         public static T GetComponent<T>(
-            this IAddressablesLoader<AssetReferenceGameObject, GameObject> addressablesLoader,
+            this IAddressablesLoader<GameObject> addressablesLoader,
             AssetReferenceGameObject assetReference)
             where T : Component
         {

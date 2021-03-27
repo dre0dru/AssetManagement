@@ -6,7 +6,7 @@ Unity 2020.1+
 ## Features
 - Static `AddressablesService` for common `Addressables` operations.
 - Generic `IAddressablesLoader` for all asset types loadable from `Addressables`.
-- Type-safe API with `AssetReferenceT<T>` and `AssetLabelReference`.  
+- Type-safe API with `AssetReference`, `AssetReferenceT<T>` and `AssetLabelReference`.  
 - `AssetReferenceComponent<T>` and extensions to load `Component` from `Addressables`.
 - Sync assets loading during gameplay after async preload phase.
 
@@ -35,12 +35,15 @@ All API has several overloads and accepts following arguments:
   - `AssetReferenceT<T>` (and its inheritors)
   - `IEnumerable<AssetReferenceT<T>>`
   - `params AssetReferenceT<T>[]`
-- `AddressablesService`:  
+- `AddressablesService`:
+  - `AssetReference`
+  - `IEnumerable<AssetReference>`
+  - `params AssetReference[]`
   - `AssetLabelReference`
   - `IEnumerable<AssetLabelReference>`
   - `params AssetLabelReference[]`
 
-Important! `Addressables` will throw exceptions if error occurs during any async operation (e.g. no internet connection when loading remote assets or passing corrupted `AssetReference` as argument). These exceptions are not handled by package so it is best to surround any API calls with `try catch` blocks. 
+Important! `Addressables` will throw exceptions if error occurs during any async operation (e.g. no internet connection when loading remote assets or passing corrupted `AssetReference` as an argument). These exceptions are not handled by package so it is best to surround any API calls with `try catch` blocks. 
 
 ## AddressableService
 ```c#

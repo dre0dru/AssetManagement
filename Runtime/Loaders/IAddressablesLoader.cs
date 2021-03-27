@@ -8,11 +8,11 @@ namespace AddressablesServices.Loaders
     public interface IAddressablesLoader<in TAssetReference, TResult>
         where TAssetReference : AssetReference where TResult : Object
     {
-        UniTask PreloadAssets(IEnumerable<TAssetReference> assetReferences);
+        UniTask PreloadAssetsAsync(IEnumerable<TAssetReference> assetReferences);
         
-        UniTask PreloadAssets(params TAssetReference[] assetReferences);
+        UniTask PreloadAssetsAsync(params TAssetReference[] assetReferences);
 
-        UniTask PreloadAsset(TAssetReference assetReference);
+        UniTask PreloadAssetAsync(TAssetReference assetReference);
 
         void UnloadAssets(IEnumerable<TAssetReference> assetReferences);
 

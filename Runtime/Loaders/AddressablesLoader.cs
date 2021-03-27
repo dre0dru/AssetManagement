@@ -18,12 +18,12 @@ namespace AddressablesServices.Loaders
             _preloadedAssets = new Dictionary<object, AsyncOperationHandle<TResult>>();
         }
 
-        public UniTask PreloadAssets(IEnumerable<TAssetReference> assetReferences)
+        public UniTask PreloadAssetsAsync(IEnumerable<TAssetReference> assetReferences)
         {
             return PreloadAssetsInternal(assetReferences);
         }
 
-        public UniTask PreloadAssets(params TAssetReference[] assetReferences)
+        public UniTask PreloadAssetsAsync(params TAssetReference[] assetReferences)
         {
             return PreloadAssetsInternal(assetReferences);
         }
@@ -34,13 +34,13 @@ namespace AddressablesServices.Loaders
 
             foreach (var assetKey in assetReferences)
             {
-                tasks.Add(PreloadAsset(assetKey));
+                tasks.Add(PreloadAssetAsync(assetKey));
             }
 
             return UniTask.WhenAll(tasks);
         }
 
-        public async UniTask PreloadAsset(TAssetReference assetReference)
+        public async UniTask PreloadAssetAsync(TAssetReference assetReference)
         {
             if (_preloadedAssets.ContainsKey(assetReference.RuntimeKey))
             {

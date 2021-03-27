@@ -12,7 +12,7 @@ namespace AddressablesServices.Loaders
         {
             if (addressablesLoader.TryGetAsset(assetReference, out var gameObject))
             {
-                return gameObject.TryGetComponent<T>(out component);
+                return gameObject.TryGetComponent(out component);
             }
 
             component = default;

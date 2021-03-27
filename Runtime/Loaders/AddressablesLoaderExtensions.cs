@@ -7,7 +7,7 @@ namespace AddressablesServices.Loaders
     {
         public static bool TryGetComponent<T>(
             this IAddressablesLoader<GameObject> addressablesLoader,
-            AssetReferenceGameObject assetReference, out T component)
+            AssetReferenceComponent<T> assetReference, out T component)
             where T : Component
         {
             if (addressablesLoader.TryGetAsset(assetReference, out var gameObject))
@@ -21,7 +21,7 @@ namespace AddressablesServices.Loaders
 
         public static T GetComponent<T>(
             this IAddressablesLoader<GameObject> addressablesLoader,
-            AssetReferenceGameObject assetReference)
+            AssetReferenceComponent<T> assetReference)
             where T : Component
         {
             return addressablesLoader.GetAsset(assetReference).GetComponent<T>();

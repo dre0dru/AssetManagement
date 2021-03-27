@@ -22,7 +22,7 @@ This package can be installed as unity module directly from git url in two ways:
   ```
   This also will install all required dependencies.
 
-If package is installed via openupm then no additional steps are required, otherwise see [dependencies](#-dependencies).
+If package is installed via openupm then no additional steps are required, otherwise see [dependencies](#dependencies).
   
 # Dependencies
 This package has following dependencies that must be present for package to compile:

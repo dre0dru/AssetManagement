@@ -13,13 +13,17 @@ Unity 2020.1+
 # Installation
 This package can be installed as unity module directly from git url in two ways:
 - By adding following line in `Packages/manifest.json`:
-  ```"com.dre0dru.addressables.services": "https://github.com/dre0dru/AddressablesServices.git#upm",```
+```
+"com.dre0dru.addressables.services": "https://github.com/dre0dru/AddressablesServices.git#upm",
+```
 - By using `Window/Package Manager/Add package from git URL...` in Unity:
-  ```https://github.com/dre0dru/AddressablesServices.git#upm```
+```
+https://github.com/dre0dru/AddressablesServices.git#upm
+```
 - The package is also available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli):
-  ```
-  openupm add com.dre0dru.addressables.services
-  ```
+```
+openupm add com.dre0dru.addressables.services
+```
   This also will install all required dependencies.
 
 If package is installed via openupm then no additional steps are required, otherwise see [dependencies](#dependencies).

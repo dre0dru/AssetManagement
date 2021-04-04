@@ -112,6 +112,9 @@ else
     Debug.Log($"No asset was for preloaded for {assets.AssetReferenceAudioClip.RuntimeKey}");
 }
 
+//Check if asset was preloaded
+bool isAssetPreloaded = audioClipLoader.IsAssetPreloaded(assets.AssetReferenceAudioClip);
+
 //Or use unsafe asset extraction, will throw exception if no asset was preloaded
 AudioClip audioClip = audioClipLoader.GetAsset(assets.AssetReferenceAudioClip);
 

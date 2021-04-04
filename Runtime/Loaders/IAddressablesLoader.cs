@@ -22,6 +22,8 @@ namespace AddressablesServices.Loaders
         void UnloadAllAssets();
 
         bool TryGetAsset(AssetReferenceT<TAsset> assetReference, out TAsset asset);
+        
+        bool IsAssetPreloaded(AssetReferenceT<TAsset> assetReference);
 
         TAsset GetAsset(AssetReferenceT<TAsset> assetReference);
     }

@@ -108,10 +108,13 @@ namespace AddressablesServices.Loaders
                 return true;
             }
 
-            Debug.LogWarning($"{Constants.LogsTag} Trying to get not loaded asset: {assetReference.RuntimeKey}");
-
             asset = default;
             return false;
+        }
+
+        public bool IsAssetPreloaded(AssetReferenceT<TAsset> assetReference)
+        {
+            return _preloadedAssets.ContainsKey(assetReference.RuntimeKey);
         }
 
         public TAsset GetAsset(AssetReferenceT<TAsset> assetReference)

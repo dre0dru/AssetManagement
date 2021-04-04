@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/dre0dru/AddressablesServices/compare/v2.0.0...v2.1.0) (2021-04-04)
+
+
+### Features
+
+* added `IsAssetPreloaded` methods to `IAddressablesLoader` ([1470742](https://github.com/dre0dru/AddressablesServices/commit/1470742f8724c1e0702b7d6bc6d13c432790a625))
+
 # [2.0.0](https://github.com/dre0dru/AddressablesServices/compare/v1.1.0...v2.0.0) (2021-03-27)
 
 

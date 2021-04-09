@@ -9,14 +9,10 @@ namespace AddressablesServices.Loaders
     {
         UniTask PreloadAssetsAsync(IEnumerable<AssetReferenceT<TAsset>> assetReferences);
         
-        UniTask PreloadAssetsAsync(params AssetReferenceT<TAsset>[] assetReferences);
-
         UniTask PreloadAssetAsync(AssetReferenceT<TAsset> assetReference);
 
         void UnloadAssets(IEnumerable<AssetReferenceT<TAsset>> assetReferences);
-
-        void UnloadAssets(params AssetReferenceT<TAsset>[] assetReferences);
-
+        
         void UnloadAsset(AssetReferenceT<TAsset> assetReference);
 
         void UnloadAllAssets();

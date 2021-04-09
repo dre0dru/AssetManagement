@@ -19,22 +19,7 @@ namespace AddressablesServices.Loaders
 
         public UniTask PreloadAssetsAsync(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
         {
-            return PreloadAssetsInternal(assetReferences);
-        }
-
-        public UniTask PreloadAssetsAsync(params AssetReferenceT<TAsset>[] assetReferences)
-        {
-            return PreloadAssetsInternal(assetReferences);
-        }
-
-        private UniTask PreloadAssetsInternal(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
-        {
-            var tasks = new List<UniTask>();
-
-            foreach (var assetKey in assetReferences)
-            {
-                tasks.Add(PreloadAssetAsync(assetKey));
-            }
+            var tasks = assetReferences.Select(PreloadAssetAsync);
 
             return UniTask.WhenAll(tasks);
         }
@@ -58,16 +43,6 @@ namespace AddressablesServices.Loaders
         }
 
         public void UnloadAssets(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
-        {
-            UnloadAssetsInternal(assetReferences);
-        }
-
-        public void UnloadAssets(params AssetReferenceT<TAsset>[] assetReferences)
-        {
-            UnloadAssetsInternal(assetReferences);
-        }
-
-        private void UnloadAssetsInternal(IEnumerable<AssetReferenceT<TAsset>> assetReferences)
         {
             foreach (var assetKey in assetReferences)
             {

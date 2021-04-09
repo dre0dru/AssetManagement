@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/dre0dru/AddressablesServices/compare/v2.1.0...v2.2.0) (2021-04-09)
+
+
+### Features
+
+* extracted `params` overload for `IAddressablesLoader` to extension methods, added extension methods for assets loading ([e0eb22f](https://github.com/dre0dru/AddressablesServices/commit/e0eb22f05a5f6ebb865ebebef73eec6e4df471d1))
+
 # [2.1.0](https://github.com/dre0dru/AddressablesServices/compare/v2.0.0...v2.1.0) (2021-04-04)
 
 

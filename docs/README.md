@@ -123,6 +123,33 @@ audioClipLoader.UnloadAsset(assets.AssetReferenceAudioClip);
 //Or unload all assets that was loaded
 audioClipLoader.UnloadAllAssets();
 ```
+## IAddressablesLoader extensions
+Check out `IAddressablesLoader` extensions that provide overloads for IEnumerable arguments and combined operations:
+```c#
+var assets = new ExampleAssets();
+
+IAddressablesLoader<Sprite> spriteLoader =
+    new AddressablesLoader<Sprite>();
+    
+//Preload asset if not preloaded, then get the result
+Sprite sprite = await spriteLoader.LoadAssetAsync(assets.SpriteAssetReference);
+
+//Get multiple preloaded assets
+IEnumerable<Sprite> sprites = spriteLoader.GetAssets(assets.SpriteAssetReference1, 
+                            assets.SpriteAssetReference2);
+
+//Same for multiple assets
+IEnumerable<Sprite> sprites = await spriteLoader.LoadAssetsAsync(assets.SpriteAssetReference1,
+                            assets.SpriteAssetReference2);
+
+//Safely extract multiple assets
+if(spriteLoader.TryGetAssets(assets.SomeSpriteAssetReferencesCollection, out var sprites)
+{
+    Debug.Log($"Assets loaded successfully: {sprites}");
+}
+
+//And many more including params overloads
+```
 ## AssetReferenceComponent<T>
 `AssetReferenceComponent<T>` allows to filter Addressables assets by specific component in Unity Editor. It must be used with `IAddressablesLoader<GameObject>`.
 ```c#

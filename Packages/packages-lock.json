@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.cysharp.unitask": {
-      "version": "2.2.4",
+      "version": "2.2.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -12,8 +12,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.cysharp.unitask": "2.2.4",
-        "com.unity.addressables": "1.17.13",
+        "com.cysharp.unitask": "2.2.5",
+        "com.unity.addressables": "1.17.17",
         "net.tnrd.scriptingdefineutility": "1.0.1"
       }
     },
@@ -24,7 +24,7 @@
       "dependencies": {}
     },
     "com.unity.addressables": {
-      "version": "1.17.13",
+      "version": "1.17.17",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -88,7 +88,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.4",
+      "version": "3.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {

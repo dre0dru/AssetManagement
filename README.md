@@ -20,7 +20,7 @@ This package can be installed as unity module directly from git url in two ways:
 ```
 https://github.com/dre0dru/AddressablesServices.git#upm
 ```
-- The package is also available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli):
+- The package is also available on the [openupm registry](https://openupm.com/packages/com.dre0dru.addressables.services/). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli):
 ```
 openupm add com.dre0dru.addressables.services
 ```

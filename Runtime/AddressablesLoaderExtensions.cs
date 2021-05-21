@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace AddressablesServices.Loaders
+namespace AddressablesServices
 {
     public static class AddressablesLoaderExtensions
     {
@@ -25,31 +25,27 @@ namespace AddressablesServices.Loaders
         public static T GetComponent<T>(
             this IAddressablesLoader<GameObject> addressablesLoader,
             AssetReferenceComponent<T> assetReference)
-            where T : Component
-        {
-            return addressablesLoader.GetAsset(assetReference).GetComponent<T>();
-        }
+            where T : Component =>
+            addressablesLoader.GetAsset(assetReference).GetComponent<T>();
 
-        public static UniTask PreloadAssetsAsync<TAsset>(this IAddressablesLoader<TAsset> addressablesLoader,
+        public static UniTask PreloadAssetsAsync<TAsset>(
+            this IAddressablesLoader<TAsset> addressablesLoader,
             params AssetReferenceT<TAsset>[] assetReferences)
-            where TAsset : Object
-        {
-            return addressablesLoader.PreloadAssetsAsync(assetReferences);
-        }
+            where TAsset : Object =>
+            addressablesLoader.PreloadAssetsAsync(assetReferences);
 
-        public static void UnloadAssets<TAsset>(this IAddressablesLoader<TAsset> addressablesLoader,
+        public static void UnloadAssets<TAsset>(
+            this IAddressablesLoader<TAsset> addressablesLoader,
             params AssetReferenceT<TAsset>[] assetReferences)
-            where TAsset : Object
-        {
+            where TAsset : Object =>
             addressablesLoader.UnloadAssets(assetReferences);
-        }
 
         public static async UniTask<TAsset> LoadAssetAsync<TAsset>(
             this IAddressablesLoader<TAsset> addressablesLoader,
             AssetReferenceT<TAsset> assetReference)
             where TAsset : Object
         {
-            if (addressablesLoader.IsAssetPreloaded(assetReference))
+            if (addressablesLoader.IsAssetLoaded(assetReference))
             {
                 return addressablesLoader.GetAsset(assetReference);
             }
@@ -59,46 +55,37 @@ namespace AddressablesServices.Loaders
             return addressablesLoader.GetAsset(assetReference);
         }
 
-        public static UniTask<IEnumerable<TAsset>> LoadAssetsAsync<TAsset>(
+        public static async UniTask<IEnumerable<TAsset>> LoadAssetsAsync<TAsset>(
             this IAddressablesLoader<TAsset> addressablesLoader,
             IEnumerable<AssetReferenceT<TAsset>> assetReferences)
             where TAsset : Object
         {
-            return addressablesLoader.LoadAssetsAsync(assetReferences.ToArray());
-        }
-
-        public static async UniTask<IEnumerable<TAsset>> LoadAssetsAsync<TAsset>(
-            this IAddressablesLoader<TAsset> addressablesLoader,
-            params AssetReferenceT<TAsset>[] assetReferences)
-            where TAsset : Object
-        {
             var assetsToLoad = assetReferences
-                .Where(assetReference => addressablesLoader.IsAssetPreloaded(assetReference) == false);
+                .Where(assetReference => addressablesLoader.IsAssetLoaded(assetReference) == false);
 
             await addressablesLoader.PreloadAssetsAsync(assetsToLoad);
 
             return addressablesLoader.GetAssets(assetReferences);
         }
 
-        public static IEnumerable<TAsset> GetAssets<TAsset>(this IAddressablesLoader<TAsset> addressablesLoader,
-            IEnumerable<AssetReferenceT<TAsset>> assetReferences)
-            where TAsset : Object
-        {
-            return assetReferences.Select(addressablesLoader.GetAsset);
-        }
+        public static  UniTask<IEnumerable<TAsset>> LoadAssetsAsync<TAsset>(
+            this IAddressablesLoader<TAsset> addressablesLoader,
+            params AssetReferenceT<TAsset>[] assetReferences)
+            where TAsset : Object =>
+            LoadAssetsAsync(addressablesLoader, (IEnumerable<AssetReferenceT<TAsset>>)assetReferences);
 
-        public static bool TryGetAssets<TAsset>(this IAddressablesLoader<TAsset> addressablesLoader,
+        public static IEnumerable<TAsset> GetAssets<TAsset>(
+            this IAddressablesLoader<TAsset> addressablesLoader,
+            IEnumerable<AssetReferenceT<TAsset>> assetReferences)
+            where TAsset : Object =>
+            assetReferences.Select(addressablesLoader.GetAsset);
+
+        public static bool TryGetAssets<TAsset>(
+            this IAddressablesLoader<TAsset> addressablesLoader,
             IEnumerable<AssetReferenceT<TAsset>> assetReferences, out IEnumerable<TAsset> assets)
             where TAsset : Object
         {
-            return addressablesLoader.TryGetAssets(out assets, assetReferences.ToArray());
-        }
-        
-        public static bool TryGetAssets<TAsset>(this IAddressablesLoader<TAsset> addressablesLoader,
-            out IEnumerable<TAsset> assets, params AssetReferenceT<TAsset>[] assetReferences)
-            where TAsset : Object
-        {
-            if (assetReferences.All(addressablesLoader.IsAssetPreloaded) == false)
+            if (assetReferences.Any(addressablesLoader.IsAssetLoaded) == false)
             {
                 assets = Enumerable.Empty<TAsset>();
                 return false;
@@ -108,5 +95,10 @@ namespace AddressablesServices.Loaders
             return true;
         }
         
+        public static bool TryGetAssets<TAsset>(
+            this IAddressablesLoader<TAsset> addressablesLoader,
+            out IEnumerable<TAsset> assets, params AssetReferenceT<TAsset>[] assetReferences)
+            where TAsset : Object =>
+            TryGetAssets(addressablesLoader, assetReferences, out assets);
     }
 }

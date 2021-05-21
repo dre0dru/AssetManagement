@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.runtimeunittesttoolkit": {
+      "version": "https://github.com/Cysharp/RuntimeUnitTestToolkit.git?path=RuntimeUnitTestToolkit/Assets/RuntimeUnitTestToolkit",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1a9d2bee8d37f8e5317b7efe91e70c977c679fd6"
+    },
     "com.cysharp.unitask": {
       "version": "2.2.5",
       "depth": 0,
@@ -13,8 +20,7 @@
       "source": "embedded",
       "dependencies": {
         "com.cysharp.unitask": "2.2.5",
-        "com.unity.addressables": "1.17.17",
-        "net.tnrd.scriptingdefineutility": "1.0.1"
+        "com.unity.addressables": "1.17.17"
       }
     },
     "com.unity.2d.sprite": {

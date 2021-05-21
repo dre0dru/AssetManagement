@@ -15,11 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 7d83691881377aa4886d5d3bc6df4a86
+  m_GUID: 942639d4ebbe6364c8fde02cb368dee0
   m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f3214775359fd4b4d93855e2e802d803, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: d1c042f51be6d5c4bba52910e73d1154, type: 2}
-    - {fileID: 11400000, guid: faeeec4c75ec8824bb0b7a157a0c59d5, type: 2}
+    - {fileID: 11400000, guid: 38e261e58c4ec3f4082f9dd408a838b3, type: 2}
+    - {fileID: 11400000, guid: 74dba6e660f2ea14495b3c0e2c61d5c0, type: 2}

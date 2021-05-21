@@ -7,8 +7,7 @@
   "unityRelease": "0f1",
   "dependencies": {
     "com.cysharp.unitask": "2.2.5",
-    "com.unity.addressables": "1.17.17",
-    "net.tnrd.scriptingdefineutility": "1.0.1"
+    "com.unity.addressables": "1.17.17"
   },
   "keywords": [
     "Addressables",

@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace AddressablesServices.Loaders
+namespace AddressablesServices
 {
     public interface IAddressablesLoader<TAsset> where TAsset : Object
     {
@@ -11,16 +11,16 @@ namespace AddressablesServices.Loaders
         
         UniTask PreloadAssetAsync(AssetReferenceT<TAsset> assetReference);
 
-        void UnloadAssets(IEnumerable<AssetReferenceT<TAsset>> assetReferences);
+        bool IsAssetLoaded(AssetReferenceT<TAsset> assetReference);
         
-        void UnloadAsset(AssetReferenceT<TAsset> assetReference);
-
-        void UnloadAllAssets();
+        TAsset GetAsset(AssetReferenceT<TAsset> assetReference);
 
         bool TryGetAsset(AssetReferenceT<TAsset> assetReference, out TAsset asset);
-        
-        bool IsAssetPreloaded(AssetReferenceT<TAsset> assetReference);
 
-        TAsset GetAsset(AssetReferenceT<TAsset> assetReference);
+        void UnloadAsset(AssetReferenceT<TAsset> assetReference);
+        
+        void UnloadAssets(IEnumerable<AssetReferenceT<TAsset>> assetReferences);
+
+        void UnloadAllAssets();
     }
 }

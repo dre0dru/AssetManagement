@@ -155,17 +155,13 @@ namespace AddressablesServices
         {
             try
             {
-                do
+                var task = handle.ToUniTask(Progress.Create<float>(opProgress =>
                 {
                     var downloadStatus = handle.GetDownloadStatus();
                     onDownloadProgressUpdate?.Invoke(downloadStatus);
-                    await UniTask.WaitForEndOfFrame();
-                } while (handle.IsDone == false);
+                }));
 
-                if (handle.Status == AsyncOperationStatus.Failed)
-                {
-                    throw handle.OperationException;
-                }
+                await task;
             }
             finally
             {

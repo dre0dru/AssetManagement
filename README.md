@@ -31,7 +31,9 @@ If package is installed via openupm then no additional steps are required, other
 # Dependencies
 This package has following dependencies that must be present for package to compile:
 - [UniTask](https://github.com/Cysharp/UniTask)
-- [ScriptingDefineUtility](https://github.com/Thundernerd/Unity3D-ScriptingDefineUtility)
+
+## Optional
+[ScriptingDefineUtility](https://github.com/Thundernerd/Unity3D-ScriptingDefineUtility) is an optional dependency that enables full logs switch for `Addressables` under `Window->Asset Management->Addressables->Logs`
 
 # Usage
 All API has several overloads and accepts following arguments:

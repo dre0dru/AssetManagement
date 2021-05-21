@@ -1,6 +1,6 @@
 {
     "name": "AddressablesServices.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "AddressablesServices",
     "references": [
         "GUID:0a1e08ec355927740b1556caf7d00aae"
     ],
@@ -13,6 +13,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "net.tnrd.scriptingdefineutility",
+            "expression": "",
+            "define": "SCRIPTING_DEFINE_UTILITY"
+        }
+    ],
     "noEngineReferences": false
 }

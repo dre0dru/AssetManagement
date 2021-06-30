@@ -23,6 +23,13 @@
         "com.unity.addressables": "1.17.17"
       }
     },
+    "com.jeffjadulco.guidregenerator": {
+      "version": "https://github.com/jeffjadulco/unity-guid-regenerator.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "bc1208a37b5923b77a4f72b410926a3f36a31e60"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

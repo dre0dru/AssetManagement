@@ -1,3 +1,22 @@
+# [3.0.0](https://github.com/dre0dru/AddressablesServices/compare/v2.2.0...v3.0.0) (2021-06-30)
+
+
+### Bug Fixes
+
+* fixed handle leak on asset preload failure ([4df9bf3](https://github.com/dre0dru/AddressablesServices/commit/4df9bf3f2723e28787217f404eaeb5053e45eb6f))
+* regenerated guid to avoid conflicts with other packages ([a9ae311](https://github.com/dre0dru/AddressablesServices/commit/a9ae311ce2785c5e3536cf2d5009959c7ea109b0))
+* update menu item name ([b398758](https://github.com/dre0dru/AddressablesServices/commit/b39875808f63854fe1d7cca5b8870e26045fa3ab))
+
+
+### Features
+
+* moved to scripting define utility to optional dependencies ([38e2abe](https://github.com/dre0dru/AddressablesServices/commit/38e2abefc3c20862e5f271b40dd0b3431ee4e13d))
+
+
+### BREAKING CHANGES
+
+* moved loader classes to different namespace
+
 # [2.2.0](https://github.com/dre0dru/AddressablesServices/compare/v2.1.0...v2.2.0) (2021-04-09)
 
 

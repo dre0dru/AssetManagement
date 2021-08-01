@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dre0dru/AddressablesServices/compare/v3.0.0...v3.0.1) (2021-08-01)
+
+
+### Bug Fixes
+
+* wrapped `RequiredMember` attribute in preprocessor directive ([9c22785](https://github.com/dre0dru/AddressablesServices/commit/9c227859da01e00714bc454a3a3d00f29c330764))
+
 # [3.0.0](https://github.com/dre0dru/AddressablesServices/compare/v2.2.0...v3.0.0) (2021-06-30)
 
 

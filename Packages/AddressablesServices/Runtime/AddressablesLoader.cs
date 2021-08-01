@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.Scripting;
 using Object = UnityEngine.Object;
 
 namespace AddressablesServices
@@ -12,7 +11,9 @@ namespace AddressablesServices
     {
         private readonly Dictionary<object, AsyncOperationHandle<TAsset>> _preloadedAssets;
 
-        [RequiredMember]
+        #if UNITY_2020_3_OR_NEWER
+        [UnityEngine.Scripting.RequiredMember]
+        #endif
         public AddressablesLoader() =>
             _preloadedAssets = new Dictionary<object, AsyncOperationHandle<TAsset>>();
 

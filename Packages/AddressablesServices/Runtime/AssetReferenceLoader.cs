@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 namespace AddressablesServices
 {
     public sealed class
-        AddressablesAssetReferenceLoader<TAsset> : IAddressablesAssetReferenceLoader<TAsset>
+        AssetReferenceLoader<TAsset> : IAssetReferenceLoader<TAsset>
         where TAsset : Object
     {
         private readonly Dictionary<object, AsyncOperationHandle<TAsset>> _operationHandles;
@@ -15,7 +15,7 @@ namespace AddressablesServices
         #if UNITY_2020_3_OR_NEWER
         [UnityEngine.Scripting.RequiredMember]
         #endif
-        public AddressablesAssetReferenceLoader() =>
+        public AssetReferenceLoader() =>
             _operationHandles = new Dictionary<object, AsyncOperationHandle<TAsset>>();
 
         public UniTask PreloadAssetAsync(AssetReferenceT<TAsset> key) =>

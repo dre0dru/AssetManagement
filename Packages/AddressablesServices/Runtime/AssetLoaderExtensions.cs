@@ -6,14 +6,14 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressablesServices
 {
-    public static class AddressablesLoaderExtensions
+    public static class AssetLoaderExtensions
     {
         public static bool TryGetComponent<T>(
-            this IAddressablesLoader<AssetReferenceT<GameObject>, GameObject> addressablesLoader,
+            this IAssetLoader<AssetReferenceT<GameObject>, GameObject> assetLoader,
             AssetReferenceComponent<T> key, out T component)
             where T : Component
         {
-            if (addressablesLoader.TryGetAsset(key, out var gameObject))
+            if (assetLoader.TryGetAsset(key, out var gameObject))
             {
                 return gameObject.TryGetComponent(out component);
             }
@@ -23,82 +23,82 @@ namespace AddressablesServices
         }
 
         public static T GetComponent<T>(
-            this IAddressablesLoader<AssetReferenceT<GameObject>, GameObject> addressablesLoader,
+            this IAssetLoader<AssetReferenceT<GameObject>, GameObject> assetLoader,
             AssetReferenceComponent<T> key)
             where T : Component =>
-            addressablesLoader.GetAsset(key).GetComponent<T>();
+            assetLoader.GetAsset(key).GetComponent<T>();
 
         public static UniTask PreloadAssetsAsync<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            UniTask.WhenAll(keys.Select(addressablesLoader.PreloadAssetAsync));
+            UniTask.WhenAll(keys.Select(assetLoader.PreloadAssetAsync));
 
         public static UniTask PreloadAssetsAsync<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object =>
-            UniTask.WhenAll(keys.Select(addressablesLoader.PreloadAssetAsync));
+            UniTask.WhenAll(keys.Select(assetLoader.PreloadAssetAsync));
 
         public static void UnloadAssets<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            addressablesLoader.UnloadAssets((IEnumerable<TKey>) keys);
+            assetLoader.UnloadAssets((IEnumerable<TKey>) keys);
 
         public static void UnloadAssets<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object
         {
             foreach (var key in keys)
             {
-                addressablesLoader.UnloadAsset(key);
+                assetLoader.UnloadAsset(key);
             }
         }
 
         public static UniTask<TAsset[]> LoadAssetsAsync<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            LoadAssetsAsync(addressablesLoader, (IEnumerable<TKey>) keys);
+            LoadAssetsAsync(assetLoader, (IEnumerable<TKey>) keys);
 
         public static UniTask<TAsset[]> LoadAssetsAsync<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object =>
-            UniTask.WhenAll<TAsset>(keys.Select(addressablesLoader.LoadAssetAsync));
+            UniTask.WhenAll<TAsset>(keys.Select(assetLoader.LoadAssetAsync));
 
         public static IEnumerable<TAsset> GetAssets<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            addressablesLoader.GetAssets((IEnumerable<TKey>) keys);
+            assetLoader.GetAssets((IEnumerable<TKey>) keys);
 
         public static IEnumerable<TAsset> GetAssets<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object =>
-            keys.Select(addressablesLoader.GetAsset);
+            keys.Select(assetLoader.GetAsset);
 
         public static bool TryGetAssets<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             out IEnumerable<TAsset> assets, params TKey[] keys)
             where TAsset : Object =>
-            addressablesLoader.TryGetAssets(keys, out assets);
+            assetLoader.TryGetAssets(keys, out assets);
 
         public static bool TryGetAssets<TKey, TAsset>(
-            this IAddressablesLoader<TKey, TAsset> addressablesLoader,
+            this IAssetLoader<TKey, TAsset> assetLoader,
             IEnumerable<TKey> keys, out IEnumerable<TAsset> assets)
             where TAsset : Object
         {
-            if (keys.All(addressablesLoader.IsAssetLoaded) == false)
+            if (keys.All(assetLoader.IsAssetLoaded) == false)
             {
                 assets = Enumerable.Empty<TAsset>();
                 return false;
             }
 
-            assets = addressablesLoader.GetAssets(keys);
+            assets = assetLoader.GetAssets(keys);
             return true;
         }
     }

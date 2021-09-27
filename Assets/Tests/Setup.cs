@@ -10,10 +10,10 @@ namespace AddressablesServices.Tests
     {
         public static AssetReferences AssetReferences => Resources.Load<AssetReferences>("AssetReferences");
 
-        public static IAddressablesAssetReferenceLoader<TAsset> CreateAssetReferenceLoader<TAsset>()
+        public static IAssetReferenceLoader<TAsset> CreateAssetReferenceLoader<TAsset>()
             where TAsset : Object
         {
-            return new AddressablesAssetReferenceLoader<TAsset>();
+            return new AssetReferenceLoader<TAsset>();
         }
 
         public static async UniTask InitializeAddressablesAsync()

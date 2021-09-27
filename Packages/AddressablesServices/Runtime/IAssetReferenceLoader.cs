@@ -3,7 +3,7 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressablesServices
 {
-    public interface IAddressablesAssetReferenceLoader<TAsset> : IAddressablesLoader<AssetReferenceT<TAsset>, TAsset>
+    public interface IAssetReferenceLoader<TAsset> : IAssetLoader<AssetReferenceT<TAsset>, TAsset>
         where TAsset : Object
     {
     }

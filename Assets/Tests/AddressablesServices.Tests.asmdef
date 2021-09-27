@@ -1,0 +1,27 @@
+{
+    "name": "AddressablesServices.Tests",
+    "rootNamespace": "AddressablesServices",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "AddressablesServices",
+        "UniTask.Addressables",
+        "UniTask",
+        "Unity.Addressables",
+        "Unity.ResourceManager",
+        "Root"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

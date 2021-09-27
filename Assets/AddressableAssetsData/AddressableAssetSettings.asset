@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: 93600d6902779b948bbe8a3e0c5f56cb
+  m_DefaultGroup: 942639d4ebbe6364c8fde02cb368dee0
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 1
+  m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 1
@@ -23,7 +23,9 @@ MonoBehaviour:
   m_NonRecursiveBuilding: 0
   m_maxConcurrentWebRequests: 500
   m_ContiguousBundles: 1
-  m_ShaderBundleNaming: 0
+  m_StripUnityVersionFromBundleBuild: 0
+  m_DisableVisibleSubAssetRepresentations: 0
+  m_ShaderBundleNaming: 1
   m_ShaderBundleCustomNaming: 
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
@@ -36,10 +38,11 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 6b44e024dbf138e4a826ef793f308a0a, type: 2}
   - {fileID: 11400000, guid: 99e4a824af9b19d4aa63ebfa1b08df76, type: 2}
+  - {fileID: 11400000, guid: c9ea0e581ced1ff4bb2314e8b55dee20, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
-    m_LogResourceManagerExceptions: 1
+    m_LogResourceManagerExceptions: 0
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
   m_ProfileSettings:
     m_Profiles:
@@ -133,7 +136,7 @@ MonoBehaviour:
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: 
+          m_Data: Library/com.unity.addressables/aa/Android/Android;ServerData/Android
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean

@@ -7,9 +7,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace AddressablesServices
 {
-    //TODO превратить в statefull, добавить api для очистки аддрресаблов
-    //TODO возващать некую кешированную операцию (можно по хешам, суммировать), позволять на нее подписываться
-    //файрить эвенты перед диспоузом операции, а лучше возвращать некий стракт, у которого интеррнал доступ к внутрянке?
+    //TODO make stateful, add bundles clearing API
+    //TODO return cached operation (use hashes, sum), add events to this operation?
     public static class AddressablesService
     {
         public static async UniTask InitializeAsync()

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AddressablesServices
 {
-    public interface IAddressablesLoaderSingle<in TKey, TAsset> : IAddressablesUnloader
+    public interface IAddressablesLoader<in TKey, TAsset> : IAddressablesUnloader
         where TAsset : Object
     {
         UniTask PreloadAssetAsync(TKey key);

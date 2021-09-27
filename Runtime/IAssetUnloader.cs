@@ -1,6 +1,6 @@
 namespace AddressablesServices
 {
-    public interface IAddressablesUnloader
+    public interface IAssetUnloader
     {
         void UnloadAllAssets();
     }

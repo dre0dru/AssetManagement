@@ -20,7 +20,7 @@
       "source": "embedded",
       "dependencies": {
         "com.cysharp.unitask": "2.2.5",
-        "com.unity.addressables": "1.17.17"
+        "com.unity.addressables": "1.18.19"
       }
     },
     "com.jeffjadulco.guidregenerator": {

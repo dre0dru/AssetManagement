@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Object = UnityEngine.Object;
 
-namespace AddressablesServices
+namespace AddressableAssets.Loaders
 {
     [Serializable]
     public class AssetReferenceComponent<T> : AssetReferenceGameObject where T : Component

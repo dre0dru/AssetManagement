@@ -1,4 +1,5 @@
 using System;
+using AddressableAssets.Loaders;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -10,10 +11,10 @@ namespace AddressablesServices.Tests
     {
         public static AssetReferences AssetReferences => Resources.Load<AssetReferences>("AssetReferences");
 
-        public static IAssetReferenceLoader<TAsset> CreateAssetReferenceLoader<TAsset>()
+        public static IAssetsReferenceLoader<TAsset> CreateAssetReferenceLoader<TAsset>()
             where TAsset : Object
         {
-            return new AssetReferenceLoader<TAsset>();
+            return new AssetsReferenceLoader<TAsset>();
         }
 
         public static async UniTask InitializeAddressablesAsync()

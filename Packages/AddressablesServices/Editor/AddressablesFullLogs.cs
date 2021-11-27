@@ -2,7 +2,7 @@
 using TNRD.Utilities;
 using UnityEditor;
 
-namespace AddressablesServices.Editor
+namespace AddressableAssets.Editor
 {
     public static class AddressablesFullLogs
     {

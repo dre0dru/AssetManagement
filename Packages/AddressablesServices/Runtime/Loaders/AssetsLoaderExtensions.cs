@@ -4,16 +4,16 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace AddressablesServices
+namespace AddressableAssets.Loaders
 {
-    public static class AssetLoaderExtensions
+    public static class AssetsLoaderExtensions
     {
         public static bool TryGetComponent<T>(
-            this IAssetLoader<AssetReferenceT<GameObject>, GameObject> assetLoader,
+            this IAssetsLoader<AssetReferenceT<GameObject>, GameObject> assetsLoader,
             AssetReferenceComponent<T> key, out T component)
             where T : Component
         {
-            if (assetLoader.TryGetAsset(key, out var gameObject))
+            if (assetsLoader.TryGetAsset(key, out var gameObject))
             {
                 return gameObject.TryGetComponent(out component);
             }
@@ -23,82 +23,82 @@ namespace AddressablesServices
         }
 
         public static T GetComponent<T>(
-            this IAssetLoader<AssetReferenceT<GameObject>, GameObject> assetLoader,
+            this IAssetsLoader<AssetReferenceT<GameObject>, GameObject> assetsLoader,
             AssetReferenceComponent<T> key)
             where T : Component =>
-            assetLoader.GetAsset(key).GetComponent<T>();
+            assetsLoader.GetAsset(key).GetComponent<T>();
 
         public static UniTask PreloadAssetsAsync<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            UniTask.WhenAll(keys.Select(assetLoader.PreloadAssetAsync));
+            UniTask.WhenAll(keys.Select(assetsLoader.PreloadAssetAsync));
 
         public static UniTask PreloadAssetsAsync<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object =>
-            UniTask.WhenAll(keys.Select(assetLoader.PreloadAssetAsync));
+            UniTask.WhenAll(keys.Select(assetsLoader.PreloadAssetAsync));
 
         public static void UnloadAssets<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            assetLoader.UnloadAssets((IEnumerable<TKey>) keys);
+            assetsLoader.UnloadAssets((IEnumerable<TKey>) keys);
 
         public static void UnloadAssets<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object
         {
             foreach (var key in keys)
             {
-                assetLoader.UnloadAsset(key);
+                assetsLoader.UnloadAsset(key);
             }
         }
 
         public static UniTask<TAsset[]> LoadAssetsAsync<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            LoadAssetsAsync(assetLoader, (IEnumerable<TKey>) keys);
+            LoadAssetsAsync(assetsLoader, (IEnumerable<TKey>) keys);
 
         public static UniTask<TAsset[]> LoadAssetsAsync<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object =>
-            UniTask.WhenAll<TAsset>(keys.Select(assetLoader.LoadAssetAsync));
+            UniTask.WhenAll<TAsset>(keys.Select(assetsLoader.LoadAssetAsync));
 
         public static IEnumerable<TAsset> GetAssets<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            assetLoader.GetAssets((IEnumerable<TKey>) keys);
+            assetsLoader.GetAssets((IEnumerable<TKey>) keys);
 
         public static IEnumerable<TAsset> GetAssets<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             IEnumerable<TKey> keys)
             where TAsset : Object =>
-            keys.Select(assetLoader.GetAsset);
+            keys.Select(assetsLoader.GetAsset);
 
         public static bool TryGetAssets<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             out IEnumerable<TAsset> assets, params TKey[] keys)
             where TAsset : Object =>
-            assetLoader.TryGetAssets(keys, out assets);
+            assetsLoader.TryGetAssets(keys, out assets);
 
         public static bool TryGetAssets<TKey, TAsset>(
-            this IAssetLoader<TKey, TAsset> assetLoader,
+            this IAssetsLoader<TKey, TAsset> assetsLoader,
             IEnumerable<TKey> keys, out IEnumerable<TAsset> assets)
             where TAsset : Object
         {
-            if (keys.All(assetLoader.IsAssetLoaded) == false)
+            if (keys.All(assetsLoader.IsAssetLoaded) == false)
             {
                 assets = Enumerable.Empty<TAsset>();
                 return false;
             }
 
-            assets = assetLoader.GetAssets(keys);
+            assets = assetsLoader.GetAssets(keys);
             return true;
         }
     }

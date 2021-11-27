@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Remote
+  m_Name: RemoteAssets
   m_EditorClassIdentifier: 
-  m_GroupName: Remote
+  m_GroupName: RemoteAssets
   m_Data:
     m_SerializedData: []
-  m_GUID: f72d80fe334d3df48b6f3a4827dc3725
+  m_GUID: d565964686210bd4bb76ac2691e86e6f
   m_SerializeEntries:
-  - m_GUID: 25eac4678d9c5cf42bbf790baedb6a21
-    m_Address: Assets/Tests/Assets/big_sprite.jpg
+  - m_GUID: 34bdd9c34c8c1d947800552d7e552e24
+    m_Address: Assets/Tests/Assets/big_texture_0.jpg
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-    - 1
-  - m_GUID: bac48a2683dbd8947adc8d8ea00130ad
-    m_Address: Assets/Tests/Assets/TestComponentPrefab.prefab
+    - 2
+  - m_GUID: 69e9156a96bfec545bf1e4afa07fc28a
+    m_Address: Assets/Tests/Assets/big_texture_1.jpg
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
-    - 1
+    - 2
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f3214775359fd4b4d93855e2e802d803, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 76a6140c313409f448b0fddbeb31c810, type: 2}
-    - {fileID: 11400000, guid: 080c210f8faceb34d8807e2493db8876, type: 2}
+    - {fileID: 11400000, guid: 1ef794d31c488354583fd7cc0c1d4e3f, type: 2}
+    - {fileID: 11400000, guid: a013add3147a33f449b3f98504ed4921, type: 2}

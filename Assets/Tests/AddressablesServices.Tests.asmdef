@@ -4,12 +4,11 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "AddressablesServices",
         "UniTask.Addressables",
         "UniTask",
         "Unity.Addressables",
         "Unity.ResourceManager",
-        "Root"
+        "AddressableAssets.Loaders"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

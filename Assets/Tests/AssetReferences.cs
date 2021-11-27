@@ -1,3 +1,4 @@
+using AddressableAssets.Loaders;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

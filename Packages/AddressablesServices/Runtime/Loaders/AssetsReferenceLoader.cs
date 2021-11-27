@@ -4,10 +4,10 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
-namespace AddressablesServices
+namespace AddressableAssets.Loaders
 {
     public sealed class
-        AssetReferenceLoader<TAsset> : IAssetReferenceLoader<TAsset>
+        AssetsReferenceLoader<TAsset> : IAssetsReferenceLoader<TAsset>
         where TAsset : Object
     {
         private readonly Dictionary<object, AsyncOperationHandle<TAsset>> _operationHandles;
@@ -15,7 +15,7 @@ namespace AddressablesServices
         #if UNITY_2020_3_OR_NEWER
         [UnityEngine.Scripting.RequiredMember]
         #endif
-        public AssetReferenceLoader() =>
+        public AssetsReferenceLoader() =>
             _operationHandles = new Dictionary<object, AsyncOperationHandle<TAsset>>();
 
         public UniTask PreloadAssetAsync(AssetReferenceT<TAsset> key) =>
@@ -31,7 +31,7 @@ namespace AddressablesServices
             }
             catch
             {
-                Addressables.Release(handle);
+                UnityEngine.AddressableAssets.Addressables.Release(handle);
                 _operationHandles.Remove(key.RuntimeKey);
                 throw;
             }
@@ -71,7 +71,7 @@ namespace AddressablesServices
         {
             if (_operationHandles.TryGetValue(key.RuntimeKey, out var handle))
             {
-                Addressables.Release(handle);
+                UnityEngine.AddressableAssets.Addressables.Release(handle);
                 _operationHandles.Remove(key.RuntimeKey);
             }
         }
@@ -80,7 +80,7 @@ namespace AddressablesServices
         {
             foreach (var handle in _operationHandles.Values)
             {
-                Addressables.Release(handle);
+                UnityEngine.AddressableAssets.Addressables.Release(handle);
             }
 
             _operationHandles.Clear();
@@ -90,7 +90,7 @@ namespace AddressablesServices
         {
             if (!_operationHandles.TryGetValue(key.RuntimeKey, out var handle))
             {
-                handle = Addressables.LoadAssetAsync<TAsset>(key);
+                handle = UnityEngine.AddressableAssets.Addressables.LoadAssetAsync<TAsset>(key);
                 _operationHandles.Add(key.RuntimeKey, handle);
             }
 

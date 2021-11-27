@@ -1,9 +1,9 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace AddressablesServices
+namespace AddressableAssets.Loaders
 {
-    public interface IAssetLoader<in TKey, TAsset> : IAssetUnloader
+    public interface IAssetsLoader<in TKey, TAsset> : IAssetsUnloader
         where TAsset : Object
     {
         UniTask PreloadAssetAsync(TKey key);

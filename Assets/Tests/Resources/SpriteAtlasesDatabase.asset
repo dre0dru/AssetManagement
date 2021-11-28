@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd35f425b32e4a5ba9aee6b81c4f170d, type: 3}
   m_Name: SpriteAtlasesDatabase
   m_EditorClassIdentifier: 
-  _keysToValues: []
+  _keysToValues:
+  - Key: 
+    Value:
+      m_AssetGUID: aa8e4081a65617744bdcec32994e7b50
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

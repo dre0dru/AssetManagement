@@ -29,6 +29,10 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     - 2
+  - m_GUID: aa8e4081a65617744bdcec32994e7b50
+    m_Address: Assets/Tests/Assets/Atlas.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f3214775359fd4b4d93855e2e802d803, type: 2}
   m_SchemaSet:

@@ -3,6 +3,9 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+#if VCONTAINER
+using VContainer;
+#endif
 
 namespace AddressableAssets.Loaders
 {
@@ -44,7 +47,7 @@ namespace AddressableAssets.Loaders
             this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            assetsLoader.UnloadAssets((IEnumerable<TKey>) keys);
+            assetsLoader.UnloadAssets((IEnumerable<TKey>)keys);
 
         public static void UnloadAssets<TKey, TAsset>(
             this IAssetsLoader<TKey, TAsset> assetsLoader,
@@ -61,7 +64,7 @@ namespace AddressableAssets.Loaders
             this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            LoadAssetsAsync(assetsLoader, (IEnumerable<TKey>) keys);
+            LoadAssetsAsync(assetsLoader, (IEnumerable<TKey>)keys);
 
         public static UniTask<TAsset[]> LoadAssetsAsync<TKey, TAsset>(
             this IAssetsLoader<TKey, TAsset> assetsLoader,
@@ -73,7 +76,7 @@ namespace AddressableAssets.Loaders
             this IAssetsLoader<TKey, TAsset> assetsLoader,
             params TKey[] keys)
             where TAsset : Object =>
-            assetsLoader.GetAssets((IEnumerable<TKey>) keys);
+            assetsLoader.GetAssets((IEnumerable<TKey>)keys);
 
         public static IEnumerable<TAsset> GetAssets<TKey, TAsset>(
             this IAssetsLoader<TKey, TAsset> assetsLoader,
@@ -101,5 +104,15 @@ namespace AddressableAssets.Loaders
             assets = assetsLoader.GetAssets(keys);
             return true;
         }
+
+        #if VCONTAINER
+
+        public static RegistrationBuilder RegisterAssetsReferenceLoader<TAsset>(this IContainerBuilder builder)
+            where TAsset : Object
+        {
+            return builder.Register<IAssetsReferenceLoader<TAsset>, AssetsReferenceLoader<TAsset>>(Lifetime.Singleton);
+        }
+
+        #endif
     }
 }

@@ -2,6 +2,7 @@
   "dependencies": {
     "com.cysharp.runtimeunittesttoolkit": "https://github.com/Cysharp/RuntimeUnitTestToolkit.git?path=RuntimeUnitTestToolkit/Assets/RuntimeUnitTestToolkit",
     "com.cysharp.unitask": "2.2.5",
+    "com.dre0dru.shared.sources": "https://github.com/dre0dru/Shared.Sources.git?path=/Packages/Shared.Sources",
     "com.jeffjadulco.guidregenerator": "https://github.com/jeffjadulco/unity-guid-regenerator.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "1.18.19",

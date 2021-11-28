@@ -20,6 +20,9 @@ namespace AddressableAssets.Downloaders
 
         public AssetsDownloadStatus DownloadStatus => _downloadStatus;
 
+        #if UNITY_2020_3_OR_NEWER
+        [UnityEngine.Scripting.RequiredMember]
+        #endif
         public AssetLabelDownloadPack(params AssetLabelReference[] assetLabelReferences)
         {
             _assetLabelReferences = assetLabelReferences;

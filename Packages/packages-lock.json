@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "1a9d2bee8d37f8e5317b7efe91e70c977c679fd6"
+      "hash": "021fcd8faaf34fa266751a366de070a0edc2efca"
     },
     "com.cysharp.unitask": {
       "version": "2.2.5",
@@ -23,12 +23,19 @@
         "com.unity.addressables": "1.18.19"
       }
     },
+    "com.dre0dru.shared.sources": {
+      "version": "https://github.com/dre0dru/Shared.Sources.git?path=/Packages/Shared.Sources",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "560f8cf8e8863ffb17112f1b1a35160bae1d128b"
+    },
     "com.jeffjadulco.guidregenerator": {
       "version": "https://github.com/jeffjadulco/unity-guid-regenerator.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "bc1208a37b5923b77a4f72b410926a3f36a31e60"
+      "hash": "9606358002fd2e1c3e767bf1d5694c8ce4c8dedd"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

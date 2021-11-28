@@ -1,0 +1,23 @@
+{
+    "name": "AddressableAssets.Editor.Fonts",
+    "rootNamespace": "AddressableAssets",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:dc829289c42011f49b6e47e0f9be73c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.textmeshpro",
+            "expression": "",
+            "define": "TEXTMESHPRO"
+        }
+    ],
+    "noEngineReferences": false
+}

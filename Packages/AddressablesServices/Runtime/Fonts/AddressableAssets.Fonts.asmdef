@@ -1,0 +1,38 @@
+{
+    "name": "AddressableAssets.Fonts",
+    "rootNamespace": "AddressableAssets",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:9bfa8149881bc314697e6c3c96d0530a",
+        "GUID:58bd4bc4ec55f6d4d8c86b92b274cc3a",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:ed27a03d91d1b074dbc6bc2bc16ab73a",
+        "GUID:584b7828850956244a0dc66cb12db368"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.dre0dru.shared.sources",
+            "expression": "",
+            "define": "SHARED_SOURCES"
+        },
+        {
+            "name": "jp.hadashikick.vcontainer",
+            "expression": "",
+            "define": "VCONTAINER"
+        },
+        {
+            "name": "com.unity.textmeshpro",
+            "expression": "",
+            "define": "TEXTMESHPRO"
+        }
+    ],
+    "noEngineReferences": false
+}

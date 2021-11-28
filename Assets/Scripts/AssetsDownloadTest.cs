@@ -24,11 +24,11 @@ public class AssetsDownloadTest : MonoBehaviour
     [SerializeField]
     private Text _status;
 
-    private AssetLabelDownloadPack _downloadPack;
+    private AssetLabelsDownloadPack _downloadPack;
 
     public void GetDownloadProgress()
     {
-        _downloadPack = new AssetLabelDownloadPack(_assetLabelReference);
+        _downloadPack = new AssetLabelsDownloadPack(_assetLabelReference);
         Debug.Log($"Got download pack");
     }
 

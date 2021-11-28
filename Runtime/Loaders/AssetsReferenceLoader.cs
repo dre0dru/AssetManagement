@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Object = UnityEngine.Object;
 
 namespace AddressableAssets.Loaders
 {
@@ -31,7 +31,7 @@ namespace AddressableAssets.Loaders
             }
             catch
             {
-                UnityEngine.AddressableAssets.Addressables.Release(handle);
+                Addressables.Release(handle);
                 _operationHandles.Remove(key.RuntimeKey);
                 throw;
             }
@@ -71,7 +71,7 @@ namespace AddressableAssets.Loaders
         {
             if (_operationHandles.TryGetValue(key.RuntimeKey, out var handle))
             {
-                UnityEngine.AddressableAssets.Addressables.Release(handle);
+                Addressables.Release(handle);
                 _operationHandles.Remove(key.RuntimeKey);
             }
         }
@@ -80,7 +80,7 @@ namespace AddressableAssets.Loaders
         {
             foreach (var handle in _operationHandles.Values)
             {
-                UnityEngine.AddressableAssets.Addressables.Release(handle);
+                Addressables.Release(handle);
             }
 
             _operationHandles.Clear();
@@ -90,7 +90,7 @@ namespace AddressableAssets.Loaders
         {
             if (!_operationHandles.TryGetValue(key.RuntimeKey, out var handle))
             {
-                handle = UnityEngine.AddressableAssets.Addressables.LoadAssetAsync<TAsset>(key);
+                handle = Addressables.LoadAssetAsync<TAsset>(key);
                 _operationHandles.Add(key.RuntimeKey, handle);
             }
 

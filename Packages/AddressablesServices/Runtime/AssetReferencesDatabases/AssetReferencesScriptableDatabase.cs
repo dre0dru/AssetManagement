@@ -6,8 +6,7 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressableAssets.AssetReferencesDatabases
 {
-    public class AssetReferencesScriptableDatabase<TAsset> : KvpScriptableDatabase<string, AssetReferenceT<TAsset>>,
-        IAssetReferencesDatabase<TAsset>
+    public class AssetReferencesScriptableDatabase<TAsset> : KvpScriptableDatabase<string, AssetReferenceT<TAsset>>
         where TAsset : Object
     {
 

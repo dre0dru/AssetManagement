@@ -107,10 +107,10 @@ namespace AddressableAssets.Loaders
 
         #if VCONTAINER
 
-        public static RegistrationBuilder RegisterAssetsReferenceLoader<TAsset>(this IContainerBuilder builder)
+        public static RegistrationBuilder RegisterAssetsReferenceLoader<TAsset>(this IContainerBuilder builder, Lifetime lifetime)
             where TAsset : Object
         {
-            return builder.Register<IAssetsReferenceLoader<TAsset>, AssetsReferenceLoader<TAsset>>(Lifetime.Singleton);
+            return builder.Register<IAssetsReferenceLoader<TAsset>, AssetsReferenceLoader<TAsset>>(lifetime);
         }
 
         #endif

@@ -8,7 +8,8 @@ using UnityEngine.ResourceManagement.Exceptions;
 
 namespace AddressableAssets.Downloaders
 {
-    public class AssetLabelDownloadPack : IStartableDownload<AssetsDownloadResult>,
+    //TODO maybe use WeakReference<T> for storing IProgress?
+    public class AssetLabelsDownloadPack : IStartableDownload<AssetsDownloadResult>,
         IAssetsDownloadStatus<AssetsDownloadStatus>, ITrackableProgress<AssetsDownloadStatus>
     {
         private readonly AssetLabelReference[] _assetLabelReferences;
@@ -23,7 +24,7 @@ namespace AddressableAssets.Downloaders
         #if UNITY_2020_3_OR_NEWER
         [UnityEngine.Scripting.RequiredMember]
         #endif
-        public AssetLabelDownloadPack(params AssetLabelReference[] assetLabelReferences)
+        public AssetLabelsDownloadPack(params AssetLabelReference[] assetLabelReferences)
         {
             _assetLabelReferences = assetLabelReferences;
             _downloadStatus = CreateInitialDownloadStatus();

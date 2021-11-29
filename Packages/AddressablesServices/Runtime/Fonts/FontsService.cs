@@ -17,7 +17,9 @@ namespace AddressableAssets.Fonts
 
         private readonly List<TMP_FontAsset> _loadedFonts;
 
+        #if UNITY_2020_3_OR_NEWER
         [UnityEngine.Scripting.RequiredMember]
+        #endif
         public FontsService(ITMPResourcesDatabase tmpResourcesDatabase,
             IAssetsReferenceLoader<TMP_FontAsset> fontsLoader,
             IAssetsReferenceLoader<TMP_SpriteAsset> spriteAssetsLoader)

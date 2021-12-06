@@ -1,4 +1,4 @@
-#if SHARED_RESOURCES
+#if SHARED_SOURCES
 
 using System;
 using AddressableAssets.Loaders;

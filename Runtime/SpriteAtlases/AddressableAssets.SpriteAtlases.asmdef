@@ -20,7 +20,7 @@
         {
             "name": "com.dre0dru.shared.sources",
             "expression": "",
-            "define": "SHARED_RESOURCES"
+            "define": "SHARED_SOURCES"
         },
         {
             "name": "jp.hadashikick.vcontainer",

@@ -1,4 +1,4 @@
-#if SHARED_RESOURCES && VCONTAINER
+#if SHARED_SOURCES && VCONTAINER
 
 using Shared.Sources.ScriptableDatabase;
 using UnityEngine.AddressableAssets;

@@ -1,4 +1,4 @@
-#if SHARED_RESOURCES && VCONTAINER
+#if SHARED_SOURCES && VCONTAINER
 
 using System;
 using VContainer.Unity;

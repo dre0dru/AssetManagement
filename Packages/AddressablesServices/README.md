@@ -3,6 +3,10 @@
 A set of classes to convert Unity `Addressables` callbacks/coroutine workflow to async/await with UniTask.
 Unity 2020.1+
 
+> Docs are deprecated! For now see respective assemblies and interfaces
+
+> TODO: rewrite docs
+
 ## Features
 - Static `AddressablesService` for common `Addressables` operations.
 - Generic `IAddressablesLoader` for all asset types loadable from `Addressables`.

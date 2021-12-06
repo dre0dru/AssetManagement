@@ -1,6 +1,9 @@
-name: copy-docs
+name: Copy Docs
 on:
+  workflow_dispatch:
   push:
+    branches:
+      - master
     paths:
       - 'Packages/AddressablesServices/README.md'
       - 'Packages/AddressablesServices/LICENSE.md'

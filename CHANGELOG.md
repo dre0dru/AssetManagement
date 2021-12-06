@@ -1,3 +1,38 @@
+# [4.0.0](https://github.com/dre0dru/AddressablesServices/compare/v3.0.1...v4.0.0) (2021-12-06)
+
+
+### Bug Fixes
+
+* added missing lifetime parameter ([4c5f275](https://github.com/dre0dru/AddressablesServices/commit/4c5f27512e3b3ddc054220cdb6597fbfdcb0a0d4))
+* added preprocessor for required member attribute ([e08fdb3](https://github.com/dre0dru/AddressablesServices/commit/e08fdb368dd994c79add5d50cafdd83301ac49dd))
+* fonts editor assembly target platform wasn't set as editor ([ee81709](https://github.com/dre0dru/AddressablesServices/commit/ee817091f67fe9ee6139448e9193f6d46679f0c7))
+* wrong preprocessor directive for sprite atlases ([cfe1060](https://github.com/dre0dru/AddressablesServices/commit/cfe10601927d7e85d02a136b828e4f0d5af8b440))
+
+
+### Code Refactoring
+
+* renaming ([adad578](https://github.com/dre0dru/AddressablesServices/commit/adad578e832177aeda6b3128217f549e4b07e274))
+
+
+### Features
+
+* added asset references database ([4257873](https://github.com/dre0dru/AddressablesServices/commit/4257873a69faf62d4915093e4b8857c4f934ecd0))
+* added single/multiple loaders ([4b3e02a](https://github.com/dre0dru/AddressablesServices/commit/4b3e02a24dac84a354950f00b2de636b1b34ef92))
+* added sprite atlases provider ([21fe731](https://github.com/dre0dru/AddressablesServices/commit/21fe731c4541790859d65a27f1b838cd94377271))
+* added TMP fonts load ([1d6dd9a](https://github.com/dre0dru/AddressablesServices/commit/1d6dd9a4aa6e83bf2c50d95c2350f52100a40723))
+* assets downloader wip ([f1cd059](https://github.com/dre0dru/AddressablesServices/commit/f1cd05983e9500c1a9368954ce1a43e97f138b25))
+* assets downloading, project restructure ([58aca9f](https://github.com/dre0dru/AddressablesServices/commit/58aca9f05016cbc54cfaa1c2320f635448a161f7))
+* removed multiple assets loader, introduced higher level interface for asset reference loader ([d131385](https://github.com/dre0dru/AddressablesServices/commit/d131385f878e7b0060518152bc3b6294ce402604))
+* single/multiple loaders ontroduces ([d6d3dd7](https://github.com/dre0dru/AddressablesServices/commit/d6d3dd7f0c8286671125e25082b259efcba2b21c))
+
+
+### BREAKING CHANGES
+
+* renamed core interfaces and namespaces
+* renamed core interfaces
+* changed single loader interface
+* changed single loader interface
+
 ## [3.0.1](https://github.com/dre0dru/AddressablesServices/compare/v3.0.0...v3.0.1) (2021-08-01)
 
 

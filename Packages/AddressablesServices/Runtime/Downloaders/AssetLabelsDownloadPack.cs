@@ -120,10 +120,14 @@ namespace AddressableAssets.Downloaders
             _downloadStatus.PercentProgress = downloadStatus.Percent;
         }
 
+        // TODO Won't work on WebGL
+        // https://docs.unity3d.com/Packages/com.unity.addressables@1.19/manual/SynchronousAddressables.html#webgl
+        #if !UNITY_WEBGL
         private long GetDownloadSizeBytes()
         {
             return Addressables.GetDownloadSizeAsync((IEnumerable)_assetLabelReferences).WaitForCompletion();
         }
+        #endif
 
         private AssetsDownloadStatus CreateInitialDownloadStatus()
         {

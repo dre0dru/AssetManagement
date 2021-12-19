@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/dre0dru/AddressablesServices/compare/v5.0.0...v6.0.0) (2021-12-19)
+
+
+### Features
+
+* reworked fonts service, generic assets ([cee22b2](https://github.com/dre0dru/AddressablesServices/commit/cee22b228267357b529a9e76e527703bdbf50457))
+
+
+### BREAKING CHANGES
+
+* fonts service signature changes
+
 # [5.0.0](https://github.com/dre0dru/AddressablesServices/compare/v4.0.0...v5.0.0) (2021-12-19)
 
 

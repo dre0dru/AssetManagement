@@ -7,9 +7,9 @@ using TMPro;
 
 namespace AddressableAssets.Fonts
 {
-    public class FontsService : IFontsService
+    public class FontsService<TLocaleKey, TSpriteAssetKey> : IFontsService<TLocaleKey, TSpriteAssetKey>
     {
-        private readonly ITMPAddressableAssets _tmpAddressableAssets;
+        private readonly ITMPAddressableAssets<TLocaleKey, TSpriteAssetKey> _tmpAddressableAssets;
 
         private readonly IAssetsReferenceLoader<TMP_FontAsset> _fontsLoader;
 
@@ -20,7 +20,7 @@ namespace AddressableAssets.Fonts
         #if UNITY_2020_3_OR_NEWER
         [UnityEngine.Scripting.RequiredMember]
         #endif
-        public FontsService(ITMPAddressableAssets itmpAddressableAssets,
+        public FontsService(ITMPAddressableAssets<TLocaleKey, TSpriteAssetKey> itmpAddressableAssets,
             IAssetsReferenceLoader<TMP_FontAsset> fontsLoader,
             IAssetsReferenceLoader<TMP_SpriteAsset> spriteAssetsLoader)
         {
@@ -30,37 +30,37 @@ namespace AddressableAssets.Fonts
             _loadedFonts = new List<TMP_FontAsset>();
         }
 
-        public async UniTask LoadFontForLocale(string locale)
+        public async UniTask LoadFontForLocale(TLocaleKey localeKey)
         {
             await LoadMasterFontAsset();
-            
-            var font = await _fontsLoader.LoadAssetAsync(_tmpAddressableAssets.GetFontAssetForLocale(locale));
+
+            var font = await _fontsLoader.LoadAssetAsync(_tmpAddressableAssets.GetFontAssetForLocale(localeKey));
 
             AddFontAssetToFallback(font);
         }
 
-        public void UnloadFontForLocale(string locale)
+        public void UnloadFontForLocale(TLocaleKey localeKey)
         {
-            var key = _tmpAddressableAssets.GetFontAssetForLocale(locale);
+            var key = _tmpAddressableAssets.GetFontAssetForLocale(localeKey);
             var font = _fontsLoader.GetAsset(key);
 
             RemoveFontAssetFromFallback(font);
             _fontsLoader.UnloadAsset(key);
         }
 
-        public async UniTask LoadSpriteAsset(string spriteAssetName)
+        public async UniTask LoadSpriteAsset(TSpriteAssetKey spriteAssetKey)
         {
             var spriteAssetBase = await LoadMasterSpriteAsset();
 
             var spriteAsset =
-                await _spriteAssetsLoader.LoadAssetAsync(_tmpAddressableAssets.GetSpriteAsset(spriteAssetName));
+                await _spriteAssetsLoader.LoadAssetAsync(_tmpAddressableAssets.GetSpriteAsset(spriteAssetKey));
 
             spriteAssetBase.fallbackSpriteAssets.Add(spriteAsset);
         }
 
-        public void UnloadSpriteAsset(string spriteAssetName)
+        public void UnloadSpriteAsset(TSpriteAssetKey spriteAssetKey)
         {
-            var key = _tmpAddressableAssets.GetSpriteAsset(spriteAssetName);
+            var key = _tmpAddressableAssets.GetSpriteAsset(spriteAssetKey);
             var font = _spriteAssetsLoader.GetAsset(key);
 
             TMP_Settings.GetSpriteAsset().fallbackSpriteAssets.Remove(font);

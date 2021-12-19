@@ -1,9 +1,5 @@
-#if SHARED_SOURCES
-
 using System;
 using AddressableAssets.Loaders;
-using Shared.Sources.ScriptableDatabase;
-using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
 
 namespace AddressableAssets.SpriteAtlases
@@ -11,16 +7,16 @@ namespace AddressableAssets.SpriteAtlases
     public class SpriteAtlasProvider : ISpriteAtlasProvider
     {
         private readonly IAssetsReferenceLoader<SpriteAtlas> _spriteAtlasLoader;
-        private readonly IScriptableDatabase<string, AssetReferenceT<SpriteAtlas>> _spriteAtlasesDatabase;
+        private readonly ISpriteAtlasAddressableAssets _spriteAtlasAddressableAssets;
 
         #if UNITY_2020_3_OR_NEWER
         [UnityEngine.Scripting.RequiredMember]
         #endif
         public SpriteAtlasProvider(IAssetsReferenceLoader<SpriteAtlas> spriteAtlasLoader,
-            IScriptableDatabase<string, AssetReferenceT<SpriteAtlas>> spriteAtlasesDatabase)
+            ISpriteAtlasAddressableAssets spriteAtlasAddressableAssets)
         {
             _spriteAtlasLoader = spriteAtlasLoader;
-            _spriteAtlasesDatabase = spriteAtlasesDatabase;
+            _spriteAtlasAddressableAssets = spriteAtlasAddressableAssets;
         }
 
         public void SubscribeToAtlasManagerRequests()
@@ -37,17 +33,13 @@ namespace AddressableAssets.SpriteAtlases
         {
             _spriteAtlasLoader.UnloadAllAssets();
         }
-        
+
         private async void OnAtlasRequested(string atlasName, Action<SpriteAtlas> callback)
         {
-            if (_spriteAtlasesDatabase.TryGet(atlasName, out var spriteAtlasReference))
-            {
-                var spriteAtlas = await _spriteAtlasLoader.LoadAssetAsync(spriteAtlasReference);
+            var spriteAtlas =
+                await _spriteAtlasLoader.LoadAssetAsync(_spriteAtlasAddressableAssets.GetAsset(atlasName));
 
-                callback?.Invoke(spriteAtlas);
-            }
+            callback?.Invoke(spriteAtlas);
         }
     }
 }
-
-#endif

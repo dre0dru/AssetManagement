@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressableAssets.Fonts
 {
-    public interface ITMPResourcesDatabase
+    public interface ITMPAddressableAssets
     {
         AssetReferenceT<TMP_FontAsset> MasterFontAsset { get; }
         

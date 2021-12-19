@@ -1,6 +1,6 @@
-using AddressableAssets.AssetReferencesDatabases;
+using AddressableAssets.AssetReferences;
 using AddressableAssets.SpriteAtlases;
-using Shared.Sources.ScriptableDatabase;
+using Shared.Sources.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
@@ -10,20 +10,15 @@ using VContainer.Unity;
 public class LifetimeScopeBase : LifetimeScope
 {
     [SerializeField]
-    private SpriteAtlasesDatabase _spriteAtlasesDatabase;
+    private SpriteAtlasAssetReferences spriteAtlasAssetReferences;
 
     [SerializeField]
-    private KvpScriptableDatabase<string, AssetReferenceT<SpriteAtlas>> _v2;
+    private UDictionarySo<string, AssetReferenceT<SpriteAtlas>> _v2;
 
     [SerializeField]
-    private AssetReferencesScriptableDatabase<SpriteAtlas> _v3;
+    private AssetReferencesUDictionarySo<SpriteAtlas> _v3;
 
     protected override void Configure(IContainerBuilder builder)
     {
-        IScriptableDatabase<string, AssetReferenceT<SpriteAtlas>> sad = _v2;
-        KvpScriptableDatabase<string, AssetReferenceT<SpriteAtlas>> ssad = _v2;
-        
-        
-        builder.RegisterSpriteAtlasesDatabase(_spriteAtlasesDatabase);
     }
 }

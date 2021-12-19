@@ -1,11 +1,8 @@
-using AddressableAssets.AssetReferencesDatabases;
+using AddressableAssets.AssetReferences;
 using UnityEngine;
 
-namespace DefaultNamespace
+[CreateAssetMenu(fileName = "SpriteDatabase", menuName = "Databases/Sprite Database")]
+public class AssetReferencesSpriteDatabase : AssetReferencesUDictionarySo<Sprite>
 {
-    [CreateAssetMenu(fileName = "SpriteDatabase", menuName = "Databases/Sprite Database")]
-    public class AssetReferencesSpriteDatabase : AssetReferencesScriptableDatabase<Sprite>
-    {
         
-    }
 }

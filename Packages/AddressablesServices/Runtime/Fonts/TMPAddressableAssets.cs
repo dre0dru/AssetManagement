@@ -1,14 +1,14 @@
 #if TEXTMESHPRO && SHARED_SOURCES
 
-using Shared.Sources.ScriptableDatabase;
+using Shared.Sources.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace AddressableAssets.Fonts
 {
-    [CreateAssetMenu(fileName = "TMPResourcesDatabase", menuName = "AddressableAssets/Fonts/TMP Resources Database")]
-    public class TMPResourcesDatabase : ScriptableObject, ITMPResourcesDatabase
+    [CreateAssetMenu(fileName = "TMPAddressableAssets", menuName = "AddressableAssets/Fonts/TMP Addressable Assets")]
+    public class TMPAddressableAssets : ScriptableObject, ITMPAddressableAssets
     {
         [SerializeField]
         private AssetReferenceT<TMP_FontAsset> _masterFontAsset;
@@ -17,20 +17,20 @@ namespace AddressableAssets.Fonts
         private AssetReferenceT<TMP_SpriteAsset> _masterSpriteAsset;
 
         [SerializeField]
-        private KvpScriptableDatabase<string, AssetReferenceT<TMP_FontAsset>> _fontAssetsDatabase;
+        private DictionarySo<string, AssetReferenceT<TMP_FontAsset>> _fontAssets;
 
         [SerializeField]
-        private KvpScriptableDatabase<string, AssetReferenceT<TMP_SpriteAsset>> _spriteAssetsDatabase;
+        private DictionarySo<string, AssetReferenceT<TMP_SpriteAsset>> _spriteAssets;
 
         public AssetReferenceT<TMP_FontAsset> MasterFontAsset => _masterFontAsset;
 
         public AssetReferenceT<TMP_SpriteAsset> MasterSpriteAsset => _masterSpriteAsset;
 
         public AssetReferenceT<TMP_FontAsset> GetFontAssetForLocale(string locale) =>
-            _fontAssetsDatabase.Get(locale);
+            _fontAssets[locale];
 
         public AssetReferenceT<TMP_SpriteAsset> GetSpriteAsset(string assetName) =>
-            _spriteAssetsDatabase.Get(assetName);
+            _spriteAssets[assetName];
     }
 }
 

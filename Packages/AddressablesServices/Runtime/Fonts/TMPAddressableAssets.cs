@@ -7,8 +7,7 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressableAssets.Fonts
 {
-    [CreateAssetMenu(fileName = "TMPAddressableAssets", menuName = "AddressableAssets/Fonts/TMP Addressable Assets")]
-    public class TMPAddressableAssets : ScriptableObject, ITMPAddressableAssets
+    public class TMPAddressableAssets<TLocaleKey, TSpriteAssetKey> : ScriptableObject, ITMPAddressableAssets<TLocaleKey, TSpriteAssetKey>
     {
         [SerializeField]
         private AssetReferenceT<TMP_FontAsset> _masterFontAsset;
@@ -17,19 +16,19 @@ namespace AddressableAssets.Fonts
         private AssetReferenceT<TMP_SpriteAsset> _masterSpriteAsset;
 
         [SerializeField]
-        private DictionarySo<string, AssetReferenceT<TMP_FontAsset>> _fontAssets;
+        private DictionarySo<TLocaleKey, AssetReferenceT<TMP_FontAsset>> _fontAssets;
 
         [SerializeField]
-        private DictionarySo<string, AssetReferenceT<TMP_SpriteAsset>> _spriteAssets;
+        private DictionarySo<TSpriteAssetKey, AssetReferenceT<TMP_SpriteAsset>> _spriteAssets;
 
         public AssetReferenceT<TMP_FontAsset> MasterFontAsset => _masterFontAsset;
 
         public AssetReferenceT<TMP_SpriteAsset> MasterSpriteAsset => _masterSpriteAsset;
 
-        public AssetReferenceT<TMP_FontAsset> GetFontAssetForLocale(string locale) =>
+        public AssetReferenceT<TMP_FontAsset> GetFontAssetForLocale(TLocaleKey locale) =>
             _fontAssets[locale];
 
-        public AssetReferenceT<TMP_SpriteAsset> GetSpriteAsset(string assetName) =>
+        public AssetReferenceT<TMP_SpriteAsset> GetSpriteAsset(TSpriteAssetKey assetName) =>
             _spriteAssets[assetName];
     }
 }

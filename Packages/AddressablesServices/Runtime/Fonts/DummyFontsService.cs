@@ -5,30 +5,28 @@ using Cysharp.Threading.Tasks;
 
 namespace AddressableAssets.Fonts
 {
-    public class DummyFontsService : IFontsService
+    public class DummyFontsService<TLocaleKey, TSpriteAssetKey> : IFontsService<TLocaleKey, TSpriteAssetKey>
     {
-
         [UnityEngine.Scripting.RequiredMember]
         public DummyFontsService()
         {
-            
         }
-        
-        public UniTask LoadFontForLocale(string locale)
+
+        public UniTask LoadFontForLocale(TLocaleKey localeKey)
         {
             return UniTask.Delay(TimeSpan.FromSeconds(1));
         }
 
-        public void UnloadFontForLocale(string locale)
+        public void UnloadFontForLocale(TLocaleKey localeKey)
         {
         }
 
-        public UniTask LoadSpriteAsset(string spriteAssetName)
+        public UniTask LoadSpriteAsset(TSpriteAssetKey spriteAssetKey)
         {
             return UniTask.Delay(TimeSpan.FromSeconds(1));
         }
 
-        public void UnloadSpriteAsset(string spriteAssetName)
+        public void UnloadSpriteAsset(TSpriteAssetKey spriteAssetKey)
         {
         }
     }

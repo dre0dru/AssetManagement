@@ -6,15 +6,7 @@ using UnityEngine.AddressableAssets;
 
 namespace AddressableAssets.AssetReferences
 {
-    public class AssetReferencesUDictionarySo<TAsset, TKvp> : UDictionarySo<string, AssetReferenceT<TAsset>, TKvp>
-        where TAsset : Object
-        where TKvp : IKvp<string, AssetReferenceT<TAsset>>, new()
-    {
-
-    }
-    
-    public class AssetReferencesUDictionarySo<TAsset> : 
-        AssetReferencesUDictionarySo<TAsset, Kvp<string, AssetReferenceT<TAsset>>>
+    public class AssetReferencesUDictionarySo<TKey, TAsset> : UDictionarySo<TKey, AssetReferenceT<TAsset>>
         where TAsset : Object
     {
 

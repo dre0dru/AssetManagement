@@ -6,8 +6,8 @@ using UnityEngine.AddressableAssets;
 public class AssetReferencesDatabasesTest : MonoBehaviour
 {
     [SerializeField]
-    private AssetReferencesUDictionarySo<Sprite> _assetReferencesScriptableDatabase;
-    
+    private AssetReferencesUDictionarySo<string, Sprite> _assetReferencesScriptableDatabase;
+
     [SerializeField]
     private AssetReferencesSpriteDatabase _assetReferencesSpriteDatabase;
 

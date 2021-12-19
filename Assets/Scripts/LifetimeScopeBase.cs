@@ -16,7 +16,7 @@ public class LifetimeScopeBase : LifetimeScope
     private UDictionarySo<string, AssetReferenceT<SpriteAtlas>> _v2;
 
     [SerializeField]
-    private AssetReferencesUDictionarySo<SpriteAtlas> _v3;
+    private AssetReferencesUDictionarySo<string, SpriteAtlas> _v3;
 
     protected override void Configure(IContainerBuilder builder)
     {

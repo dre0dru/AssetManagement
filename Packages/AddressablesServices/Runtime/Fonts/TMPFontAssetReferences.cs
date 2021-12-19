@@ -2,12 +2,10 @@
 
 using AddressableAssets.AssetReferences;
 using TMPro;
-using UnityEngine;
 
 namespace AddressableAssets.Fonts
 {
-    [CreateAssetMenu(fileName = "TMPFontAssetReferences", menuName = "AddressableAssets/Fonts/TMP Font Asset References")]
-    public class TMPFontAssetReferences : AssetReferencesUDictionarySo<TMP_FontAsset>
+    public class TMPFontAssetReferences<TKey> : AssetReferencesUDictionarySo<TKey, TMP_FontAsset>
     {
         
     }

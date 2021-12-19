@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/dre0dru/AddressablesServices/compare/v4.0.0...v5.0.0) (2021-12-19)
+
+
+### Bug Fixes
+
+* removed webgl preprocessor directive for asasets download pack ([c5ddab7](https://github.com/dre0dru/AddressablesServices/commit/c5ddab7231a00ead3fe36d9483b3ad9ccf1af8d1))
+
+
+### Features
+
+* updated code to support shared sources changes ([b2c069f](https://github.com/dre0dru/AddressablesServices/commit/b2c069fca8da692dc456a7ace339ede726ed150a))
+
+
+### BREAKING CHANGES
+
+* namespaces and interfaces were changed fonts, sprite atlases and databases
+
 # [4.0.0](https://github.com/dre0dru/AddressablesServices/compare/v3.0.1...v4.0.0) (2021-12-06)
 
 

@@ -123,12 +123,10 @@ namespace AddressableAssets.Downloaders
         // TODO Won't work on WebGL
         // Call Addressables.InitializeAsync() before creating instance of this class
         // https://docs.unity3d.com/Packages/com.unity.addressables@1.19/manual/SynchronousAddressables.html#webgl
-        #if !UNITY_WEBGL
         private long GetDownloadSizeBytes()
         {
             return Addressables.GetDownloadSizeAsync((IEnumerable)_assetLabelReferences).WaitForCompletion();
         }
-        #endif
 
         private AssetsDownloadStatus CreateInitialDownloadStatus()
         {

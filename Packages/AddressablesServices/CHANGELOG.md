@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/dre0dru/AddressablesServices/compare/v6.0.0...v6.1.0) (2021-12-27)
+
+
+### Features
+
+* updated TMP fonts build processor ([a0ab4e1](https://github.com/dre0dru/AddressablesServices/commit/a0ab4e11e93b76a6bf8bf2c2bc696f511c0952de))
+
 # [6.0.0](https://github.com/dre0dru/AddressablesServices/compare/v5.0.0...v6.0.0) (2021-12-19)
 
 

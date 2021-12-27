@@ -1,6 +1,6 @@
-#if TEXTMESHPRO
+#if TEXTMESHPRO && SHARED_SOURCES
 
-using Shared.Sources.Editor;
+using Shared.Sources.CustomDrawers;
 using TMPro;
 using UnityEngine;
 

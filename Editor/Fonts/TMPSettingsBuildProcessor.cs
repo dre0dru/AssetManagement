@@ -1,4 +1,4 @@
-#if TEXTMESHPRO
+#if TEXTMESHPRO && SHARED_SOURCES
 
 using System.IO;
 using Shared.Sources.Editor;
@@ -52,12 +52,12 @@ namespace AddressableAssets.Editor.Fonts
 
         private string GetBuildFolderPath(TMPBuildProcessorSettings buildProcessorSettings)
         {
-            return Path.Combine(buildProcessorSettings.DestinationFolder.Path, GetAssetName(buildProcessorSettings));
+            return Path.Combine(AssetDatabase.GUIDToAssetPath(buildProcessorSettings.DestinationFolder.GUID), GetAssetName(buildProcessorSettings));
         }
 
         private string GetIgnoreFolderPath(TMPBuildProcessorSettings buildProcessorSettings)
         {
-            return Path.Combine(buildProcessorSettings.SourceFolder.Path, GetAssetName(buildProcessorSettings));
+            return Path.Combine(AssetDatabase.GUIDToAssetPath(buildProcessorSettings.SourceFolder.GUID), GetAssetName(buildProcessorSettings));
         }
 
         private string GetAssetName(TMPBuildProcessorSettings buildProcessorSettings)

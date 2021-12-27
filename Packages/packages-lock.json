@@ -28,7 +28,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "84c8ccc65504d6355cf9fe3d707ce3be1e41bc82"
+      "hash": "079cc042aa1e22dcc3e8383b78d17a5c60a45309"
     },
     "com.jeffjadulco.guidregenerator": {
       "version": "https://github.com/jeffjadulco/unity-guid-regenerator.git",

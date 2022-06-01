@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/dre0dru/AddressablesServices/compare/v6.1.0...v6.1.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* fixed invalid dependency on shared.sources ([4764de4](https://github.com/dre0dru/AddressablesServices/commit/4764de4ca0f29b80791ff1df68ecec19d253e24e))
+
 # [6.1.0](https://github.com/dre0dru/AddressablesServices/compare/v6.0.0...v6.1.0) (2021-12-27)
 
 

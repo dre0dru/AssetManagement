@@ -40,7 +40,7 @@ namespace AddressableAssets.Editor.Fonts
 
         private bool IsEnabled(out TMPBuildProcessorSettings buildProcessorSettings)
         {
-            buildProcessorSettings = AssetDatabaseUtils.FindAsset<TMPBuildProcessorSettings>();
+            buildProcessorSettings = AssetDatabaseUtils.FindSingleAsset<TMPBuildProcessorSettings>();
 
             if (buildProcessorSettings == null || buildProcessorSettings.Enabled == false)
             {

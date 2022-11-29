@@ -3,6 +3,7 @@
 A set of classes to convert Unity `Addressables` callbacks/coroutine workflow to async/await with UniTask.
 Unity 2020.1+
 
+
 ## Installation
 This package can be installed as a Unity package from git url.
 

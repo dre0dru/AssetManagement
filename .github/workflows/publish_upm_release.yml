@@ -18,10 +18,3 @@ jobs:
         branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Create UPM version tag
-      if: steps.semantic.outputs.new_release_published == 'true'
-      run: |
-        git tag $TAG upm
-        git push origin --tags
-      env:
-        TAG: upm/v${{ steps.semantic.outputs.new_release_version }}

@@ -1,0 +1,28 @@
+{
+    "name": "Dre0Dru.RuntimeAssets.Editor",
+    "rootNamespace": "Dre0Dru.RuntimeAssets.Editor",
+    "references": [
+        "GUID:305cbc51d8d1f0745a72b6a9464f093e",
+        "GUID:f24cf67903b27ae498b3069ecc30cc11",
+        "GUID:dc1efc5b0af9df743ad1e20ba7076138",
+        "GUID:858f01292afdc66489a4648c01d9ca1e",
+        "GUID:a6fcf49d5403da6468e825c181d92b8a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.madsbangh.easybuttons",
+            "expression": "",
+            "define": "EASY_BUTTONS_SUPPORT"
+        }
+    ],
+    "noEngineReferences": false
+}

@@ -1,0 +1,39 @@
+{
+    "name": "Dre0Dru.AddressableAssets.SpriteAtlases",
+    "rootNamespace": "Dre0Dru.AddressableAssets.SpriteAtlases",
+    "references": [
+        "GUID:9bfa8149881bc314697e6c3c96d0530a",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:70f7626a22e696b4cb0c451b9caa0dc1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "ADDRESSABLES_SUPPORT",
+        "UNITASK_SUPPORT"
+    ],
+    "versionDefines": [
+        {
+            "name": "jp.hadashikick.vcontainer",
+            "expression": "",
+            "define": "VCONTAINER_SUPPORT"
+        },
+        {
+            "name": "com.cysharp.unitask",
+            "expression": "",
+            "define": "UNITASK_SUPPORT"
+        },
+        {
+            "name": "com.unity.addressables",
+            "expression": "",
+            "define": "ADDRESSABLES_SUPPORT"
+        }
+    ],
+    "noEngineReferences": false
+}

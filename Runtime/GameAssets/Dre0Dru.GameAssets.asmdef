@@ -1,0 +1,14 @@
+{
+    "name": "Dre0Dru.GameAssets",
+    "rootNamespace": "Dre0Dru.GameAssets",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

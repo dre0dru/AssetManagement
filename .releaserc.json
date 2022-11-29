@@ -3,10 +3,10 @@
   "plugins": [
     ["@semantic-release/commit-analyzer", { "preset": "angular" }],
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/changelog", { "preset": "angular", "changelogFile": "Packages/AddressablesServices/CHANGELOG.md" }],
-    ["@semantic-release/npm", { "npmPublish": false, "pkgRoot": "Packages/AddressablesServices" }],
+    ["@semantic-release/changelog", { "preset": "angular", "changelogFile": "CHANGELOG.md" }],
+    ["@semantic-release/npm", { "npmPublish": false, "pkgRoot": "AssetManagement" }],
     ["@semantic-release/git", {
-      "assets": ["Packages/AddressablesServices/package.json", "Packages/AddressablesServices/CHANGELOG.md"],
+      "assets": ["package.json", "CHANGELOG.md"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
     "@semantic-release/github"

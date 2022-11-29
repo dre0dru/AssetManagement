@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/dre0dru/AssetManagement/compare/v6.1.1...v7.0.0) (2022-11-29)
+
+
+### Features
+
+* package at root ([f0b2d73](https://github.com/dre0dru/AssetManagement/commit/f0b2d73e94f9d7238d6f8de5d519eb84b7c99dce))
+
+
+### BREAKING CHANGES
+
+* namespaces change
+
 ## [6.1.1](https://github.com/dre0dru/AddressablesServices/compare/v6.1.0...v6.1.1) (2022-06-01)
 
 

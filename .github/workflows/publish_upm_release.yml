@@ -18,14 +18,6 @@ jobs:
         branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Create UPM branch subtree
-      run: |
-        git branch -d upm &> /dev/null || echo upm branch not found
-        git subtree split -P "$PKG_ROOT" -b upm
-        git checkout upm
-        git push -f -u origin upm
-      env:
-        PKG_ROOT: Packages/AddressablesServices
     - name: Create UPM version tag
       if: steps.semantic.outputs.new_release_published == 'true'
       run: |

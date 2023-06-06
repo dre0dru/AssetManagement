@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/dre0dru/AssetManagement/compare/v7.0.0...v7.1.0) (2023-06-06)
+
+
+### Features
+
+* added scoped/transient assets ([c1ec7e6](https://github.com/dre0dru/AssetManagement/commit/c1ec7e6363a3c9b6c1b3b61520941c6f95a216c4))
+
 # [7.0.0](https://github.com/dre0dru/AssetManagement/compare/v6.1.1...v7.0.0) (2022-11-29)
 
 

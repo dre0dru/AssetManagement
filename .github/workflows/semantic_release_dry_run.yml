@@ -19,7 +19,3 @@ jobs:
         branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Output info
-      run: |
-        echo ${{ steps.semantic.outputs.new_release_published }} >> $GITHUB_OUTPUT
-        echo ${{ steps.semantic.outputs.new_release_version }} >> $GITHUB_OUTPUT

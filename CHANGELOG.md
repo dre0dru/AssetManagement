@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/dre0dru/AssetManagement/compare/v7.1.0...v7.1.1) (2023-09-11)
+
+
+### Bug Fixes
+
+* wrapped missing VContainer usage with defines ([2c73201](https://github.com/dre0dru/AssetManagement/commit/2c73201619d7cf78115d107d7733789aa3e744e8))
+
 # [7.1.0](https://github.com/dre0dru/AssetManagement/compare/v7.0.0...v7.1.0) (2023-06-06)
 
 

@@ -3,7 +3,9 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+#if VCONTAINER_SUPPORT
 using VContainer;
+#endif
 
 namespace Dre0Dru.AddressableAssets.Loaders
 {
